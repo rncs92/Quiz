@@ -31,6 +31,9 @@
             <input id="username"
                    class="mt-4 w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5"
                    placeholder="Ievadiet savu vārdu">
+            {% if errors.username %}
+                <span class="text-red-500">{{ errors.username[0] }}</span>
+            {% endif %}
         </div>
     </div>
     <div class="flex justify-center w-screen">

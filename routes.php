@@ -3,7 +3,7 @@
 use Vendon\Controllers\IndexController;
 
 return [
-    //Index
+    //Authorization
     ['GET', '/', [IndexController::class, 'index']],
-
+    ['POST', '/', [IndexController::class, 'store']],
 ];

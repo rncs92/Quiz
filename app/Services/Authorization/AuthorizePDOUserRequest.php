@@ -1,22 +1,18 @@
 <?php declare(strict_types=1);
 
-namespace Vendon\Models;
+namespace Vendon\Service\Authorization;
 
-class User
+class AuthorizePDOUserRequest
 {
     private string $username;
     private string $test;
-    private ?int $userId;
-
 
     public function __construct(
         string $username,
-        string $test,
-        int    $userId = null
+        string $test
     )
     {
         $this->username = $username;
-        $this->userId = $userId;
         $this->test = $test;
     }
 
@@ -28,15 +24,5 @@ class User
     public function getTest(): string
     {
         return $this->test;
-    }
-
-    public function getUserId(): ?int
-    {
-        return $this->userId;
-    }
-
-    public function setUserId(?int $userId): void
-    {
-        $this->userId = $userId;
     }
 }

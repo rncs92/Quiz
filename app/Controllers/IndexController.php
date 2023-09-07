@@ -2,12 +2,45 @@
 
 namespace Vendon\Controllers;
 
+use Vendon\Core\Redirect;
 use Vendon\Core\TwigView;
+use Vendon\Exceptions\ValidationException;
+use Vendon\Service\Authorization\AuthorizePDOUserRequest;
+use Vendon\Service\Authorization\AuthorizePDOUserService;
+use Vendon\Validation\IndexValidator;
 
 class IndexController
 {
+    private AuthorizePDOUserService $authorizePDOUserService;
+    private IndexValidator $validator;
+
+    public function __construct(
+        AuthorizePDOUserService $authorizePDOUserService,
+        IndexValidator          $validator
+    )
+    {
+        $this->authorizePDOUserService = $authorizePDOUserService;
+        $this->validator = $validator;
+    }
+
     public function index(): TwigView
     {
         return new TwigView('index', []);
+    }
+
+    public function store(): Redirect
+    {
+        try {
+            $this->validator->validateIndex($_POST);
+            $this->authorizePDOUserService->handle(
+                new AuthorizePDOUserRequest(
+                    $_POST['username'],
+                    $_POST['test'],
+                )
+            );
+            return new Redirect("/");
+        } catch (ValidationException $exception) {
+            return new Redirect('/register');
+        }
     }
 }
