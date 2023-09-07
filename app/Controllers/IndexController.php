@@ -38,6 +38,19 @@ class IndexController
                     $_POST['tests'],
                 )
             );
+
+            if (isset($_POST['tests'])) {
+                $selectedTest = $_POST['tests'];
+
+                switch ($selectedTest) {
+                    case 'test1':
+                        return new Redirect('test');
+                    case 'test2':
+                        return new Redirect('test2');
+                    case 'test3':
+                        return new Redirect('test3');
+                }
+            }
             return new Redirect("test");
         } catch (ValidationException $exception) {
             return new Redirect('/');

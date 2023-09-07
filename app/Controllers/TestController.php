@@ -10,4 +10,14 @@ class TestController
     {
         return new TwigView('Tests/test1', []);
     }
+
+    public function index2()
+    {
+        return new TwigView('Tests/test2', []);
+    }
+
+    public function index3()
+    {
+        return new TwigView('Tests/test3', []);
+    }
 }
