@@ -1,0 +1,22 @@
+{
+    "name": "janis/vendon",
+    "autoload": {
+        "psr-4": {
+            "Vendon\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "rncs92",
+            "email": "123461096+rncs92@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "nikic/fast-route": "^1.3",
+        "php-di/php-di": "^6.4",
+        "twig/twig": "^3.0",
+        "vlucas/phpdotenv": "^5.5",
+        "nesbot/carbon": "^2.69",
+        "doctrine/dbal": "^3.6"
+    }
+}
