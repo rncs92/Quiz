@@ -3,7 +3,6 @@
 namespace Vendon\Validation;
 
 use Vendon\Exceptions\IndexException;
-use Vendon\Repository\UserRepository;
 
 class IndexValidator
 {
@@ -15,14 +14,14 @@ class IndexValidator
 
     public function validateIndex(array $fields = []): void
     {
-        if (strlen($fields['username']) < 3) {
-            $this->errors['username'][] = 'Username must be at least 3 symbols long!';
+        if (strlen($fields['username']) < 2) {
+            $this->errors['username'][] = 'Name must be at least 2 symbols long!';
         }
 
         if (count($this->errors) > 0) {
             $_SESSION['errors'] = $this->errors;
 
-            throw new IndexException('Please fill the fields!');
+            throw new IndexException('Please fill in the fields!');
         }
     }
 }

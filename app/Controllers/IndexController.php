@@ -35,12 +35,12 @@ class IndexController
             $this->authorizePDOUserService->handle(
                 new AuthorizePDOUserRequest(
                     $_POST['username'],
-                    $_POST['test'],
+                    $_POST['tests'],
                 )
             );
-            return new Redirect("/");
+            return new Redirect("test");
         } catch (ValidationException $exception) {
-            return new Redirect('/register');
+            return new Redirect('/');
         }
     }
 }

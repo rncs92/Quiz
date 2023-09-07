@@ -29,6 +29,7 @@
         <div class="w-1/4">
             <label for="username" class="flex justify-center"></label>
             <input id="username"
+                   name="username"
                    class="mt-4 w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5"
                    placeholder="Ievadiet savu vārdu">
             {% if errors.username %}
@@ -40,6 +41,7 @@
         <div class="w-1/4">
             <label for="tests" class="flex justify-center block mb-2 text-sm font-medium text-gray-900"></label>
             <select id="tests"
+                    name="tests"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                 <option selected>Izvēlies testu</option>
                 <option value="test1">90to gadu žargoni</option>
