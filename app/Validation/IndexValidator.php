@@ -2,7 +2,6 @@
 
 namespace Vendon\Validation;
 
-
 use Vendon\Exceptions\ValidationException;
 
 class IndexValidator
