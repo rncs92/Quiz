@@ -8,6 +8,49 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Vendon</title>
 </head>
-<body>
+<body class="bg-gray-200 w-screen h-screen">
+<section class="relative mx-auto w-fit">
+    <!-- navbar -->
+    <nav class="flex justify-between bg-cyan-800 text-white w-screen">
+        <div class="px-5 xl:px-12 py-6 flex w-full items-center">
+            <a class="text-3xl font-bold font-heading" href="/">
+                <!-- <img class="h-9" src="logo.png" alt="logo"> -->
+                <img src="https://vendon.net/wp-content/uploads/2021/06/Logo_Header-1.svg" width="200" height="46"
+                     class="attachment-full size-full wp-image-2389 astra-logo-svg" loading="lazy" alt="Vendon">
+            </a>
+        </div>
+    </nav>
+</section>
+<div class="flex justify-center items-center w-full mt-10">
+    <h1 class="font-bold text-4xl">Testa uzdevums</h1>
+</div>
+<form method="POST" action="/">
+    <div class="flex justify-center w-screen">
+        <div class="w-1/4">
+            <label for="username" class="flex justify-center"></label>
+            <input id="username"
+                   class="mt-4 w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5"
+                   placeholder="Ievadiet savu vārdu">
+        </div>
+    </div>
+    <div class="flex justify-center w-screen">
+        <div class="w-1/4">
+            <label for="tests" class="flex justify-center block mb-2 text-sm font-medium text-gray-900"></label>
+            <select id="tests"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                <option selected>Izvēlies testu</option>
+                <option value="test1">90to gadu žargoni</option>
+                <option value="test2">Latviešu valodas tests</option>
+                <option value="test3">Āķīgie jautājumi</option>
+            </select>
+        </div>
+    </div>
+    <div class="flex justify-center w-screen">
+        <button type="submit"
+                class="flex items-center mt-2 rounded-md bg-white py-2 pl-3 pr-4 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+            Sākt testu!
+        </button>
+    </div>
+</form>
 </body>
 </html>
