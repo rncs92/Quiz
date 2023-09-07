@@ -5,8 +5,8 @@ namespace Vendon\Controllers;
 use Vendon\Core\Redirect;
 use Vendon\Core\TwigView;
 use Vendon\Exceptions\ValidationException;
-use Vendon\Service\Authorization\AuthorizePDOUserRequest;
-use Vendon\Service\Authorization\AuthorizePDOUserService;
+use Vendon\Services\Authorization\AuthorizePDOUserRequest;
+use Vendon\Services\Authorization\AuthorizePDOUserService;
 use Vendon\Validation\IndexValidator;
 
 class IndexController
