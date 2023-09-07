@@ -43,11 +43,14 @@
             <select id="tests"
                     name="tests"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                <option selected>Izvēlies testu</option>
+                <option value="">Izvēlies testu</option>
                 <option value="test1">90to gadu žargoni</option>
                 <option value="test2">Latviešu valodas tests</option>
                 <option value="test3">Āķīgie jautājumi</option>
             </select>
+            {% if errors.tests %}
+                <span class="text-red-500">{{ errors.tests[0] }}</span>
+            {% endif %}
         </div>
     </div>
     <div class="flex justify-center w-screen">

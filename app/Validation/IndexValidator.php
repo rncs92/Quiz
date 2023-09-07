@@ -2,7 +2,8 @@
 
 namespace Vendon\Validation;
 
-use Vendon\Exceptions\IndexException;
+
+use Vendon\Exceptions\ValidationException;
 
 class IndexValidator
 {
@@ -15,13 +16,17 @@ class IndexValidator
     public function validateIndex(array $fields = []): void
     {
         if (strlen($fields['username']) < 2) {
-            $this->errors['username'][] = 'Name must be at least 2 symbols long!';
+            $this->errors['username'][] = 'Vārdam ir jābūt vismaz 2 simbols garam!';
+        }
+
+        if (!strlen($fields['tests'])) {
+            $this->errors['tests'][] = 'Lūdzu izvēlieties testu!';
         }
 
         if (count($this->errors) > 0) {
             $_SESSION['errors'] = $this->errors;
 
-            throw new IndexException('Please fill in the fields!');
+            throw new ValidationException('Please fill in the fields!');
         }
     }
 }
