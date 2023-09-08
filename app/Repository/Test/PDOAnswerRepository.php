@@ -18,12 +18,31 @@ class PDOAnswerRepository implements AnswerRepository
         $this->queryBuilder = $this->connection->createQueryBuilder();
     }
 
-    public function all()
+    public function all(): array
     {
         $queryBuilder = $this->queryBuilder;
         $answers = $queryBuilder
             ->select('*')
             ->from('test3_answers')
+            ->fetchAllAssociative();
+
+        $answerCollection = [];
+
+        foreach ($answers as $answer) {
+            $answerCollection[] = $this->buildModel($answer);
+        }
+
+        return $answerCollection;
+    }
+
+    public function byQuestionId(int $questionId): array
+    {
+        $queryBuilder = $this->queryBuilder;
+        $answers = $queryBuilder
+            ->select('*')
+            ->from('test3_answers')
+            ->where('question_id = ?')
+            ->setParameter(0, $questionId)
             ->fetchAllAssociative();
 
         $answerCollection = [];

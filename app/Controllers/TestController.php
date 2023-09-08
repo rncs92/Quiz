@@ -3,6 +3,7 @@
 namespace Vendon\Controllers;
 
 use Vendon\Core\TwigView;
+use Vendon\Models\Question;
 use Vendon\Services\Test3\Show\ShowPDOAnswerService;
 use Vendon\Services\Test3\Show\ShowPDOQuestionService;
 
@@ -33,7 +34,19 @@ class TestController
     public function index3():TwigView
     {
         $questions = $this->questionService->handle();
-        $answers = $this->answerService->handle();
+        $answers = [];
+
+        foreach ($questions as $question) {
+            /** @var  Question $question */
+            $questionAnswers = $this->answerService->handle($question->getQuestionId());
+
+            $questionWithAnswers =[
+                'question' => $question,
+                'answers' => $questionAnswers,
+            ];
+
+            $answers[] = $questionWithAnswers;
+        }
 
         return new TwigView('Tests/test3', [
            'questions' => $questions,

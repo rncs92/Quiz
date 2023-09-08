@@ -14,10 +14,10 @@ class ShowPDOAnswerService
         $this->answerRepository = $answerRepository;
     }
 
-    public function handle(): array
+    public function handle(int $questionId): array
     {
         try {
-            return $this->answerRepository->all();
+            return $this->answerRepository->byQuestionId($questionId);
         } catch (ResourceNotFoundException $exception) {
             return [];
         }

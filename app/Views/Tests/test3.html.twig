@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Vendon</title>
 </head>
 <body class="bg-gray-200 w-screen h-screen">
@@ -22,19 +23,87 @@
     </nav>
 </section>
 <div class="flex justify-center items-center w-full mt-10">
-    <h1 class="font-bold text-4xl">Testa uzdevums 3</h1>
+    <h1 class="font-bold text-4xl">Āķīgie jautājumi</h1>
 </div>
-<div>
-    {% for question in questions %}
-        {{ question.question }}
-    {% endfor %}
-    {% for answer in answers %}
-        {{ answer.answer1}}
-        {{ answer.answer2}}
-        {{ answer.answer3}}
-        {{ answer.answer4}}
-        {{ answer.answer5}}
-    {% endfor %}
+<div id="quiz-container">
+    <form id="quiz-form" action="/test3" method="POST">
+        {% for questionWithAnswers in answers %}
+            <div class="question" id="question-{{ loop.index }}">
+                <p>{{ questionWithAnswers.question.question }}</p>
+                <!-- Display answer options -->
+                <ul>
+                    {% for answer in questionWithAnswers.answers %}
+                        <li>
+                            <label>
+                                <input type="radio" name="question{{ loop.parent.loop.index }}" value="{{ answer.id }}">
+                                {{ answer.answer1 }}
+                            </label>
+                            <label>
+                                <input type="radio" name="question{{ loop.parent.loop.index }}" value="{{ answer.answer.id }}">
+                                {{ answer.answer2}}
+                            </label>
+                            <label>
+                                <input type="radio" name="question{{ loop.parent.loop.index }}" value="{{ answer.answer.id }}">
+                                {{ answer.answer3}}
+                            </label>
+                            <label>
+                                <input type="radio" name="question{{ loop.parent.loop.index }}" value="{{ answer.answer.id }}">
+                                {{ answer.answer4}}
+                            </label>
+                            <label>
+                                <input type="radio" name="question{{ loop.parent.loop.index }}" value="{{ answer.answer.id }}">
+                                {{ answer.answer5}}
+                            </label>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endfor %}
+        <input type="submit" value="Submit">
+    </form>
+
+    <div id="results" style="display: none;">
+        <h1>Quiz Completed</h1>
+        <p>Your score: <span id="score"></span> out of {{ questions|length }}</p>
+    </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        var currentQuestion = 1;
+        var totalQuestions = {{ questions|length }};
+        var score = 0;
+
+        // Show the first question
+        $('#question-1').show();
+
+        // Handle form submission
+        $('#quiz-form').submit(function (e) {
+            e.preventDefault();
+
+            // Get the selected answer for the current question
+            var selectedAnswer = $("input[name='question" + currentQuestion + "']:checked").val();
+
+            // Check if the selected answer is correct (you'll need to implement this logic)
+            if (selectedAnswer === {{ questions[currentQuestion - 1].correctAnswer }}) {
+                score++;
+            }
+
+            // Hide the current question and show the next question (if available)
+            $('#question-' + currentQuestion).hide();
+            currentQuestion++;
+
+            if (currentQuestion <= totalQuestions) {
+                $('#question-' + currentQuestion).show();
+            } else {
+                // Quiz completed, display results
+                $('#results').show();
+                $('#score').text(score);
+            }
+        });
+    });
+</script>
+</body>
+</html>
 </body>
 </html>

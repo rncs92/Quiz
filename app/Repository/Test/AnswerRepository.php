@@ -4,5 +4,7 @@ namespace Vendon\Repository\Test;
 
 interface AnswerRepository
 {
+    public function all(): array;
 
+    public function byQuestionId(int $questionId): array;
 }

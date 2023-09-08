@@ -17,6 +17,7 @@
         "twig/twig": "^3.0",
         "vlucas/phpdotenv": "^5.5",
         "nesbot/carbon": "^2.69",
-        "doctrine/dbal": "^3.6"
+        "doctrine/dbal": "^3.6",
+      "ext-json": "*"
     }
 }
