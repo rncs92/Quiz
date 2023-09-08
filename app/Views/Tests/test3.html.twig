@@ -33,46 +33,47 @@
                     <p class="flex justify-center text-2xl">{{ questionWithAnswers.question.question }}</p>
                 </div>
             </div>
-                <!-- Display answer options -->
-                <div class="flex justify-center p-4">
-                    <ul>
-                        {% for answer in questionWithAnswers.answers %}
-                            <li>
-                                <label>
-                                    <input type="radio" name="question{{ loop.parent.loop.index }}"
-                                           value="{{ answer.id }}">
+            <!-- Display answer options -->
+            <div class="flex justify-center p-4">
+                <ul>
+                    {% for answer in questionWithAnswers.answers %}
+                        <li>
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="question{{ loop.parent.loop.index }}" value="{{ answer.answer1 }}" class="hidden">
+                                <span class="bg-gray-200 hover:bg-gray-300 py-2 px-4 rounded-lg cursor-pointer">
                                     {{ answer.answer1 }}
-                                </label>
+                                </span>
+                            </label>
+                            <label>
+                                <input type="radio" name="question{{ loop.parent.loop.index }}"
+                                       value="{{ answer.answer2 }}">
+                                {{ answer.answer2 }}
+                            </label>
+                            {% if answer.answer3 %}
                                 <label>
                                     <input type="radio" name="question{{ loop.parent.loop.index }}"
-                                           value="{{ answer.answer.id }}">
-                                    {{ answer.answer2 }}
-                                </label>
-                                {% if answer.answer3 %}
-                                <label>
-                                    <input type="radio" name="question{{ loop.parent.loop.index }}"
-                                           value="{{ answer.answer.id }}">
+                                           value="{{ answer.answer3 }}">
                                     {{ answer.answer3 }}
                                 </label>
-                                {% endif %}
-                                {% if answer.answer4 %}
+                            {% endif %}
+                            {% if answer.answer4 %}
                                 <label>
                                     <input type="radio" name="question{{ loop.parent.loop.index }}"
-                                           value="{{ answer.answer.id }}">
+                                           value="{{ answer.answer4 }}">
                                     {{ answer.answer4 }}
                                 </label>
-                                {% endif %}
-                                {% if answer.answer5 %}
+                            {% endif %}
+                            {% if answer.answer5 %}
                                 <label>
                                     <input type="radio" name="question{{ loop.parent.loop.index }}"
-                                           value="{{ answer.answer.id }}">
+                                           value="{{ answer.answer5 }}">
                                     {{ answer.answer5 }}
                                 </label>
-                                {% endif %}
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </div>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
         {% endfor %}
         <input type="submit" value="Submit">
     </form>
