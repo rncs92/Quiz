@@ -23,41 +23,56 @@
     </nav>
 </section>
 <div class="flex justify-center items-center w-full mt-10">
-    <h1 class="font-bold text-4xl">Āķīgie jautājumi</h1>
+    <h1 class="font-bold text-4xl p-4 mb-8">Āķīgie jautājumi</h1>
 </div>
-<div id="quiz-container">
+<div id="quiz-container" class="flex justify-center">
     <form id="quiz-form" action="/test3" method="POST">
         {% for questionWithAnswers in answers %}
-            <div class="question" id="question-{{ loop.index }}">
-                <p>{{ questionWithAnswers.question.question }}</p>
-                <!-- Display answer options -->
-                <ul>
-                    {% for answer in questionWithAnswers.answers %}
-                        <li>
-                            <label>
-                                <input type="radio" name="question{{ loop.parent.loop.index }}" value="{{ answer.id }}">
-                                {{ answer.answer1 }}
-                            </label>
-                            <label>
-                                <input type="radio" name="question{{ loop.parent.loop.index }}" value="{{ answer.answer.id }}">
-                                {{ answer.answer2}}
-                            </label>
-                            <label>
-                                <input type="radio" name="question{{ loop.parent.loop.index }}" value="{{ answer.answer.id }}">
-                                {{ answer.answer3}}
-                            </label>
-                            <label>
-                                <input type="radio" name="question{{ loop.parent.loop.index }}" value="{{ answer.answer.id }}">
-                                {{ answer.answer4}}
-                            </label>
-                            <label>
-                                <input type="radio" name="question{{ loop.parent.loop.index }}" value="{{ answer.answer.id }}">
-                                {{ answer.answer5}}
-                            </label>
-                        </li>
-                    {% endfor %}
-                </ul>
+            <div class="flex justify-center" id="question-{{ loop.index }}">
+                <div class="flex justify-center border-2 rounded-xl p-8 border-gray-300 bg-gray-100 w-1/2">
+                    <p class="flex justify-center text-2xl">{{ questionWithAnswers.question.question }}</p>
+                </div>
             </div>
+                <!-- Display answer options -->
+                <div class="flex justify-center p-4">
+                    <ul>
+                        {% for answer in questionWithAnswers.answers %}
+                            <li>
+                                <label>
+                                    <input type="radio" name="question{{ loop.parent.loop.index }}"
+                                           value="{{ answer.id }}">
+                                    {{ answer.answer1 }}
+                                </label>
+                                <label>
+                                    <input type="radio" name="question{{ loop.parent.loop.index }}"
+                                           value="{{ answer.answer.id }}">
+                                    {{ answer.answer2 }}
+                                </label>
+                                {% if answer.answer3 %}
+                                <label>
+                                    <input type="radio" name="question{{ loop.parent.loop.index }}"
+                                           value="{{ answer.answer.id }}">
+                                    {{ answer.answer3 }}
+                                </label>
+                                {% endif %}
+                                {% if answer.answer4 %}
+                                <label>
+                                    <input type="radio" name="question{{ loop.parent.loop.index }}"
+                                           value="{{ answer.answer.id }}">
+                                    {{ answer.answer4 }}
+                                </label>
+                                {% endif %}
+                                {% if answer.answer5 %}
+                                <label>
+                                    <input type="radio" name="question{{ loop.parent.loop.index }}"
+                                           value="{{ answer.answer.id }}">
+                                    {{ answer.answer5 }}
+                                </label>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
         {% endfor %}
         <input type="submit" value="Submit">
     </form>
@@ -103,7 +118,5 @@
         });
     });
 </script>
-</body>
-</html>
 </body>
 </html>
