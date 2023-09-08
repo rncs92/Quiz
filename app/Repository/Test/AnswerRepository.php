@@ -2,7 +2,7 @@
 
 namespace Vendon\Repository\Test;
 
-interface QuestionRepository
+interface AnswerRepository
 {
-    public function all(): array;
+
 }

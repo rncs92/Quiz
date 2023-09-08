@@ -7,7 +7,7 @@ use Doctrine\DBAL\Query\QueryBuilder;
 use Vendon\Core\Database;
 use Vendon\Models\Question;
 
-class PDOQuestionRepository
+class PDOQuestionRepository implements QuestionRepository
 {
     private QueryBuilder $queryBuilder;
     private Connection $connection;
@@ -38,9 +38,8 @@ class PDOQuestionRepository
     private function buildModel($test): Question
     {
         return new Question(
-            $test['question_id'],
             $test['question'],
-            $test['is_active'],
+            (int)$test['question_id'],
         );
     }
 }
