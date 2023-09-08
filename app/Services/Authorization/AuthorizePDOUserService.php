@@ -3,7 +3,7 @@
 namespace Vendon\Services\Authorization;
 
 use Vendon\Models\User;
-use Vendon\Repository\UserRepository;
+use Vendon\Repository\User\UserRepository;
 
 class AuthorizePDOUserService
 {

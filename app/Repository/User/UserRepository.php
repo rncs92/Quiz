@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Vendon\Repository;
+namespace Vendon\Repository\User;
 
 use Vendon\Models\User;
 

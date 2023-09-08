@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
-use Vendon\Repository\PDOUserRepository;
-use Vendon\Repository\UserRepository;
+use Vendon\Repository\User\PDOUserRepository;
+use Vendon\Repository\User\UserRepository;
 
 return [
     'classes' => [
