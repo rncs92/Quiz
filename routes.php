@@ -8,10 +8,7 @@ return [
     ['GET', '/', [IndexController::class, 'index']],
     ['POST', '/', [IndexController::class, 'store']],
     //Tests
-    ['GET', '/test', [TestController::class, 'indexTest3']],
-    ['GET', '/test2', [TestController::class, 'index2']],
-
-    ['GET', '/test3', [TestController::class, 'indexTest3']],
-    ['POST', '/test3', [TestController::class, 'storeAnswersTest3']],
+    ['GET', '/test', [TestController::class, 'index']],
+    ['POST', '/test', [TestController::class, 'storeTestAnswers']],
 
 ];

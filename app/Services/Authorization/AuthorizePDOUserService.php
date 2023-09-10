@@ -2,6 +2,7 @@
 
 namespace Vendon\Services\Authorization;
 
+use Vendon\Core\Session;
 use Vendon\Models\User;
 use Vendon\Repository\User\UserRepository;
 
@@ -20,6 +21,9 @@ class AuthorizePDOUserService
             $request->getUsername(),
             $request->getTest()
         );
+
+        $userId = $user->getUserId();
+        Session::put('user_id', $userId);
 
         $this->userRepository->save($user);
 

@@ -36,12 +36,12 @@ class IndexController
             $this->authorizePDOUserService->handle(
                 new AuthorizePDOUserRequest(
                     $_POST['username'],
-                    $_POST['tests'],
+                    $_POST['test'],
                 )
             );
-
-            if (isset($_POST['tests'])) {
-                $selectedTest = $_POST['tests'];
+/*
+            if (isset($_POST['test'])) {
+                $selectedTest = $_POST['test'];
 
                 switch ($selectedTest) {
                     case 'test1':
@@ -52,8 +52,8 @@ class IndexController
                         return new Redirect('test3');
                 }
             }
-
-            Session::put('test', $_POST['tests']);
+*/
+            Session::put('test', $_POST['test']);
 
             return new Redirect("test");
         } catch (ValidationException $exception) {

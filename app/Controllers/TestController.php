@@ -26,29 +26,14 @@ class TestController
 
     public function index():TwigView
     {
-        return new TwigView('Tests/test1', []);
-    }
-
-    public function index2():TwigView
-    {
         $questions = $this->questionService->handle();
 
-        return new TwigView('Tests/test2', [
-            'questions' => $questions,
-        ]);
-    }
-
-    public function indexTest3():TwigView
-    {
-        $test = $_SESSION['test'];
-        $questions = $this->questionService->handle();
-
-        return new TwigView("Tests/$test", [
+        return new TwigView("Tests/test", [
            'questions' => $questions,
         ]);
     }
 
-    public function storeAnswersTest3(): Redirect
+    public function storeTestAnswers(): Redirect
     {
         $this->answerService->handle(
             new StorePDOAnswerRequest(
