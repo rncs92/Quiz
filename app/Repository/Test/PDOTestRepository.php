@@ -59,33 +59,29 @@ class PDOTestRepository implements TestRepository
     {
         $queryBuilder = $this->queryBuilder;
         $queryBuilder
-            ->insert('users')
+            ->update('users')
+            ->set('answer1', '?')
+            ->set('answer2', '?')
+            ->set('answer3', '?')
+            ->set('answer4', '?')
+            ->set('answer5', '?')
+            ->set('answer6', '?')
+            ->set('answer7', '?')
+            ->set('answer8', '?')
+            ->set('answer9', '?')
+            ->set('answer10', '?')
             ->where('user_id => ?')
-            ->values(
-                [
-                    'answer1' => '?',
-                    'answer2' => '?',
-                    'answer3' => '?',
-                    'answer4' => '?',
-                    'answer5' => '?',
-                    'answer6' => '?',
-                    'answer7' => '?',
-                    'answer8' => '?',
-                    'answer9' => '?',
-                    'answer10' => '?',
-                ]
-            )
-            ->setParameter(0, $userId)
-            ->setParameter(1, $answer->getAnswer1())
-            ->setParameter(2, $answer->getAnswer2())
-            ->setParameter(3, $answer->getAnswer3())
-            ->setParameter(4, $answer->getAnswer4())
-            ->setParameter(5, $answer->getAnswer5())
-            ->setParameter(6, $answer->getAnswer6())
-            ->setParameter(7, $answer->getAnswer7())
-            ->setParameter(8, $answer->getAnswer8())
-            ->setParameter(9, $answer->getAnswer9())
-            ->setParameter(10, $answer->getAnswer10());
+            ->setParameter(0, $answer->getAnswer1())
+            ->setParameter(1, $answer->getAnswer2())
+            ->setParameter(2, $answer->getAnswer3())
+            ->setParameter(3, $answer->getAnswer4())
+            ->setParameter(4, $answer->getAnswer5())
+            ->setParameter(5, $answer->getAnswer6())
+            ->setParameter(6, $answer->getAnswer7())
+            ->setParameter(7, $answer->getAnswer8())
+            ->setParameter(8, $answer->getAnswer9())
+            ->setParameter(9, $answer->getAnswer10())
+            ->setParameter(10, $userId);
 
         $queryBuilder->executeQuery();
     }
