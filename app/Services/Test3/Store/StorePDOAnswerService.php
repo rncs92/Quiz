@@ -29,7 +29,7 @@ class StorePDOAnswerService
             $request->getAnswer10(),
         );
 
-        $userId = $_SESSION['auth_id'];
+        $userId = $_SESSION['user_id'];
 
         $this->testRepository->save($answer, $userId);
 

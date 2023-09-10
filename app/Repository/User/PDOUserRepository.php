@@ -5,6 +5,7 @@ namespace Vendon\Repository\User;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Query\QueryBuilder;
 use Vendon\Core\Database;
+use Vendon\Core\Session;
 use Vendon\Models\User;
 
 class PDOUserRepository implements UserRepository
@@ -34,6 +35,7 @@ class PDOUserRepository implements UserRepository
 
         $queryBuilder->executeQuery();
 
+        Session::put('user_id', (int)$this->connection->lastInsertId());
         $user->setUserId((int)$this->connection->lastInsertId());
     }
 }

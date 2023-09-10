@@ -50,7 +50,6 @@ class TestController
             )
         );
 
-
-        return new Redirect('/');
+        return new Redirect('/results');
     }
 }
