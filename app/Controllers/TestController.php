@@ -46,19 +46,18 @@ class TestController
 
     public function storeAnswersTest3(): Redirect
     {
-        var_dump($_POST);die;
         $this->answerService->handle(
             new StorePDOAnswerRequest(
-                $_POST['answer1'],
-                $_POST['answer2'],
-                $_POST['answer3'],
-                $_POST['answer4'],
-                $_POST['answer5'],
-                $_POST['answer6'],
-                $_POST['answer7'],
-                $_POST['answer8'],
-                $_POST['answer9'],
-                $_POST['answer10'],
+                $_POST['question1_answer'],
+                $_POST['question2_answer'],
+                $_POST['question3_answer'],
+                $_POST['question4_answer'],
+                $_POST['question5_answer'],
+                $_POST['question6_answer'],
+                $_POST['question7_answer'],
+                $_POST['question8_answer'],
+                $_POST['question9_answer'],
+                $_POST['question10_answer'],
             )
         );
 
