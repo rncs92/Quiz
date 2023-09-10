@@ -22,9 +22,6 @@ class AuthorizePDOUserService
             $request->getTest()
         );
 
-        $userId = $user->getUserId();
-        Session::put('user_id', $userId);
-
         $this->userRepository->save($user);
 
         return new AuthorizePDOUserResponse($user);

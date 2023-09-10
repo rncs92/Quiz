@@ -39,20 +39,7 @@ class IndexController
                     $_POST['test'],
                 )
             );
-/*
-            if (isset($_POST['test'])) {
-                $selectedTest = $_POST['test'];
 
-                switch ($selectedTest) {
-                    case 'test1':
-                        return new Redirect('test');
-                    case 'test2':
-                        return new Redirect('test2');
-                    case 'test3':
-                        return new Redirect('test3');
-                }
-            }
-*/
             Session::put('test', $_POST['test']);
 
             return new Redirect("test");
