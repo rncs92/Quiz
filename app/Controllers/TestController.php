@@ -2,6 +2,7 @@
 
 namespace Vendon\Controllers;
 
+use Vendon\Core\Redirect;
 use Vendon\Core\TwigView;
 use Vendon\Models\Question;
 use Vendon\Services\Test3\Show\ShowPDOAnswerService;
@@ -31,26 +32,39 @@ class TestController
         return new TwigView('Tests/test2', []);
     }
 
-    public function index3():TwigView
+    public function indexTest3():TwigView
     {
         $questions = $this->questionService->handle();
-        $answers = [];
 
-        foreach ($questions as $question) {
-            /** @var  Question $question */
-            $questionAnswers = $this->answerService->handle($question->getQuestionId());
 
-            $questionWithAnswers =[
-                'question' => $question,
-                'answers' => $questionAnswers,
-            ];
+            //var_dump($answers);die;
 
-            $answers[] = $questionWithAnswers;
-        }
 
         return new TwigView('Tests/test3', [
            'questions' => $questions,
-            'answers' => $answers
+           // 'answers' => $answers
         ]);
     }
+
+    public function storeAnswersTest3(): Redirect
+    {
+
+        return new Redirect('/');
+    }
 }
+
+/*
+ *  $answers = [];
+
+        foreach ($questions as $question) {
+            @var  Question $question
+$questionAnswers = $this->answerService->handle($question->getQuestionId());
+
+$questionWithAnswers =[
+    'question' => $question,
+    'answers' => $questionAnswers,
+];
+
+$answers[] = $questionWithAnswers;
+}
+*/

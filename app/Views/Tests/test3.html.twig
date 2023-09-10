@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <title>Vendon</title>
 </head>
 <body class="bg-gray-200 w-screen h-screen">
@@ -27,57 +27,71 @@
 </div>
 <div id="quiz-container" class="flex justify-center">
     <form id="quiz-form" action="/test3" method="POST">
-        {% for questionWithAnswers in answers %}
-            <div class="flex justify-center" id="question-{{ loop.index }}">
+        {% for question in questions %}
+            <div class="question" id="{{ question.questionid }}" style="display: none;">
                 <div class="flex justify-center border-2 rounded-xl p-8 border-gray-300 bg-gray-100 w-1/2">
-                    <p class="flex justify-center text-2xl">{{ questionWithAnswers.question.question }}</p>
+                    <p class="flex justify-center text-2xl">{{ question.question }}</p>
                 </div>
-            </div>
-            <!-- Display answer options -->
-            <div class="flex justify-center p-4">
-                <ul>
-                    {% for answer in questionWithAnswers.answers %}
+                <!-- Display answer options for the current question only -->
+                <div class="flex justify-center p-4">
+                    <ul>
                         <li>
                             <label class="inline-flex items-center">
-                                <input type="radio" name="question{{ loop.parent.loop.index }}" value="{{ answer.answer1 }}" class="hidden">
+                                <input type="radio" name="answer1"
+                                       value="{{ question.answer1 }}" class="hidden">
                                 <span class="bg-gray-200 hover:bg-gray-300 py-2 px-4 rounded-lg cursor-pointer">
-                                    {{ answer.answer1 }}
-                                </span>
+                                        {{ question.answer1 }}
+                                    </span>
                             </label>
-                            <label>
-                                <input type="radio" name="question{{ loop.parent.loop.index }}"
-                                       value="{{ answer.answer2 }}">
-                                {{ answer.answer2 }}
-                            </label>
-                            {% if answer.answer3 %}
-                                <label>
-                                    <input type="radio" name="question{{ loop.parent.loop.index }}"
-                                           value="{{ answer.answer3 }}">
-                                    {{ answer.answer3 }}
-                                </label>
-                            {% endif %}
-                            {% if answer.answer4 %}
-                                <label>
-                                    <input type="radio" name="question{{ loop.parent.loop.index }}"
-                                           value="{{ answer.answer4 }}">
-                                    {{ answer.answer4 }}
-                                </label>
-                            {% endif %}
-                            {% if answer.answer5 %}
-                                <label>
-                                    <input type="radio" name="question{{ loop.parent.loop.index }}"
-                                           value="{{ answer.answer5 }}">
-                                    {{ answer.answer5 }}
-                                </label>
-                            {% endif %}
                         </li>
-                    {% endfor %}
-                </ul>
+                        <li>
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="answer2"
+                                       value="{{ question.answer2 }}" class="hidden">
+                                <span class="bg-gray-200 hover:bg-gray-300 py-2 px-4 rounded-lg cursor-pointer">
+                                        {{ question.answer2 }}
+                                    </span>
+                            </label>
+                        </li>
+                        {% if question.answer3 %}
+                            <li>
+                                <label class="inline-flex items-center">
+                                    <input type="radio" name="answer3"
+                                           value="{{ question.answer3 }}" class="hidden">
+                                    <span class="bg-gray-200 hover:bg-gray-300 py-2 px-4 rounded-lg cursor-pointer">
+                                            {{ question.answer3 }}
+                                        </span>
+                                </label>
+                            </li>
+                        {% endif %}
+                        {% if question.answer4 %}
+                            <li>
+                                <label class="inline-flex items-center">
+                                    <input type="radio" name="answer4"
+                                           value="{{ question.answer4 }}" class="hidden">
+                                    <span class="bg-gray-200 hover:bg-gray-300 py-2 px-4 rounded-lg cursor-pointer">
+                                            {{ question.answer4 }}
+                                        </span>
+                                </label>
+                            </li>
+                        {% endif %}
+                        {% if question.answer5 %}
+                            <li>
+                                <label class="inline-flex items-center">
+                                    <input type="radio" name="answer5"
+                                           value="{{ question.answer5 }}" class="hidden">
+                                    <span class="bg-gray-200 hover:bg-gray-300 py-2 px-4 rounded-lg cursor-pointer">
+                                            {{ question.answer5 }}
+                                        </span>
+                                </label>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
             </div>
         {% endfor %}
-        <input type="submit" value="Submit">
+        <input type="submit" value="Submit" class="hidden">
     </form>
-
     <div id="results" style="display: none;">
         <h1>Quiz Completed</h1>
         <p>Your score: <span id="score"></span> out of {{ questions|length }}</p>
@@ -85,38 +99,28 @@
 </div>
 
 <script>
-    $(document).ready(function () {
-        var currentQuestion = 1;
-        var totalQuestions = {{ questions|length }};
-        var score = 0;
+    const questions = document.querySelectorAll('.question');
+    let currentQuestionIndex = 0;
 
-        // Show the first question
-        $('#question-1').show();
+    function showNextQuestion() {
+        if (currentQuestionIndex < questions.length - 1) {
+            questions[currentQuestionIndex].style.display = 'none';
+            currentQuestionIndex++;
+            questions[currentQuestionIndex].style.display = 'block';
+        } else {
+            // All questions answered, show results or submit the form
+            document.getElementById('results').style.display = 'block';
+            document.getElementById('quiz-form').style.display = 'none';
+        }
+    }
 
-        // Handle form submission
-        $('#quiz-form').submit(function (e) {
-            e.preventDefault();
+    // Initially, show the first question
+    questions[currentQuestionIndex].style.display = 'block';
 
-            // Get the selected answer for the current question
-            var selectedAnswer = $("input[name='question" + currentQuestion + "']:checked").val();
-
-            // Check if the selected answer is correct (you'll need to implement this logic)
-            if (selectedAnswer === {{ questions[currentQuestion - 1].correctAnswer }}) {
-                score++;
-            }
-
-            // Hide the current question and show the next question (if available)
-            $('#question-' + currentQuestion).hide();
-            currentQuestion++;
-
-            if (currentQuestion <= totalQuestions) {
-                $('#question-' + currentQuestion).show();
-            } else {
-                // Quiz completed, display results
-                $('#results').show();
-                $('#score').text(score);
-            }
-        });
+    // Add click event listeners to answer options to show the next question
+    const answerOptions = document.querySelectorAll('input[type="radio"]');
+    answerOptions.forEach(option => {
+        option.addEventListener('change', showNextQuestion);
     });
 </script>
 </body>

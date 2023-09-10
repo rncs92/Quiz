@@ -3,22 +3,22 @@
 namespace Vendon\Services\Test3\Show;
 
 use Vendon\Exceptions\ResourceNotFoundException;
-use Vendon\Repository\Test\QuestionRepository;
+use Vendon\Repository\Test\TestRepository;
 
 class ShowPDOQuestionService
 {
-    private QuestionRepository $questionRepository;
+    private TestRepository $testRepository;
 
-    public function __construct(QuestionRepository $questionRepository)
+    public function __construct(TestRepository $testRepository)
     {
 
-        $this->questionRepository = $questionRepository;
+        $this->testRepository = $testRepository;
     }
 
     public function handle(): array
     {
         try {
-            return $this->questionRepository->all();
+            return $this->testRepository->allQuestions();
         } catch (ResourceNotFoundException $exception) {
             return [];
         }

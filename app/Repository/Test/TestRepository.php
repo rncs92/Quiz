@@ -2,9 +2,9 @@
 
 namespace Vendon\Repository\Test;
 
-interface AnswerRepository
+interface TestRepository
 {
-    public function all(): array;
+    public function allQuestions(): array;
 
     public function byQuestionId(int $questionId): array;
 }
