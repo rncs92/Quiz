@@ -24,7 +24,7 @@ class PDOTestRepository implements TestRepository
         $queryBuilder = $this->queryBuilder;
         $questions = $queryBuilder
             ->select('*')
-            ->from('test3')
+            ->from($_SESSION['test'])
             ->fetchAllAssociative();
 
         $questionCollection = [];
@@ -42,7 +42,7 @@ class PDOTestRepository implements TestRepository
         $queryBuilder = $this->queryBuilder;
         $questions = $queryBuilder
             ->select('*')
-            ->from('test3')
+            ->from($_SESSION['test'])
             ->where('question_id = ?')
             ->setParameter(0, $questionId)
             ->fetchAllAssociative();

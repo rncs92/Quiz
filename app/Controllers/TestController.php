@@ -3,11 +3,10 @@
 namespace Vendon\Controllers;
 
 use Vendon\Core\Redirect;
+use Vendon\Core\Session;
 use Vendon\Core\TwigView;
-use Vendon\Services\Test3\Show\ShowPDOAnswerService;
 use Vendon\Services\Test3\Show\ShowPDOQuestionService;
 use Vendon\Services\Test3\Store\StorePDOAnswerRequest;
-use Vendon\Services\Test3\Store\StorePDOAnswerResponse;
 use Vendon\Services\Test3\Store\StorePDOAnswerService;
 
 class TestController
@@ -32,14 +31,19 @@ class TestController
 
     public function index2():TwigView
     {
-        return new TwigView('Tests/test2', []);
+        $questions = $this->questionService->handle();
+
+        return new TwigView('Tests/test2', [
+            'questions' => $questions,
+        ]);
     }
 
     public function indexTest3():TwigView
     {
+        $test = $_SESSION['test'];
         $questions = $this->questionService->handle();
 
-        return new TwigView('Tests/test3', [
+        return new TwigView("Tests/$test", [
            'questions' => $questions,
         ]);
     }
@@ -60,6 +64,7 @@ class TestController
                 $_POST['question10_answer'],
             )
         );
+
 
         return new Redirect('/');
     }

@@ -3,6 +3,7 @@
 namespace Vendon\Controllers;
 
 use Vendon\Core\Redirect;
+use Vendon\Core\Session;
 use Vendon\Core\TwigView;
 use Vendon\Exceptions\ValidationException;
 use Vendon\Services\Authorization\AuthorizePDOUserRequest;
@@ -51,6 +52,9 @@ class IndexController
                         return new Redirect('test3');
                 }
             }
+
+            Session::put('test', $_POST['tests']);
+
             return new Redirect("test");
         } catch (ValidationException $exception) {
             return new Redirect('/');
