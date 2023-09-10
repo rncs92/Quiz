@@ -37,7 +37,7 @@
                     <ul>
                         <li>
                             <label class="inline-flex items-center">
-                                <input type="radio" name="answer1"
+                                <input type="radio" name="question{{ loop.index }}_answer"
                                        value="{{ question.answer1 }}" class="hidden">
                                 <span class="bg-gray-200 hover:bg-gray-300 py-2 px-4 rounded-lg cursor-pointer">
                                         {{ question.answer1 }}
@@ -46,7 +46,7 @@
                         </li>
                         <li>
                             <label class="inline-flex items-center">
-                                <input type="radio" name="answer2"
+                                <input type="radio" name="question{{ loop.index }}_answer"
                                        value="{{ question.answer2 }}" class="hidden">
                                 <span class="bg-gray-200 hover:bg-gray-300 py-2 px-4 rounded-lg cursor-pointer">
                                         {{ question.answer2 }}
@@ -56,7 +56,7 @@
                         {% if question.answer3 %}
                             <li>
                                 <label class="inline-flex items-center">
-                                    <input type="radio" name="answer3"
+                                    <input type="radio" name="question{{ loop.index }}_answer"
                                            value="{{ question.answer3 }}" class="hidden">
                                     <span class="bg-gray-200 hover:bg-gray-300 py-2 px-4 rounded-lg cursor-pointer">
                                             {{ question.answer3 }}
@@ -67,7 +67,7 @@
                         {% if question.answer4 %}
                             <li>
                                 <label class="inline-flex items-center">
-                                    <input type="radio" name="answer4"
+                                    <input type="radio" name="question{{ loop.index }}_answer"
                                            value="{{ question.answer4 }}" class="hidden">
                                     <span class="bg-gray-200 hover:bg-gray-300 py-2 px-4 rounded-lg cursor-pointer">
                                             {{ question.answer4 }}
@@ -78,7 +78,7 @@
                         {% if question.answer5 %}
                             <li>
                                 <label class="inline-flex items-center">
-                                    <input type="radio" name="answer5"
+                                    <input type="radio" name="question{{ loop.index }}_answer"
                                            value="{{ question.answer5 }}" class="hidden">
                                     <span class="bg-gray-200 hover:bg-gray-300 py-2 px-4 rounded-lg cursor-pointer">
                                             {{ question.answer5 }}
@@ -108,9 +108,7 @@
             currentQuestionIndex++;
             questions[currentQuestionIndex].style.display = 'block';
         } else {
-            // All questions answered, show results or submit the form
-            document.getElementById('results').style.display = 'block';
-            document.getElementById('quiz-form').style.display = 'none';
+            document.getElementById('quiz-form').submit(); // Trigger the form submission
         }
     }
 

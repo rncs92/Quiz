@@ -4,18 +4,21 @@ namespace Vendon\Controllers;
 
 use Vendon\Core\Redirect;
 use Vendon\Core\TwigView;
-use Vendon\Models\Question;
 use Vendon\Services\Test3\Show\ShowPDOAnswerService;
 use Vendon\Services\Test3\Show\ShowPDOQuestionService;
+use Vendon\Services\Test3\Store\StorePDOAnswerRequest;
+use Vendon\Services\Test3\Store\StorePDOAnswerResponse;
+use Vendon\Services\Test3\Store\StorePDOAnswerService;
 
 class TestController
 {
     private ShowPDOQuestionService $questionService;
-    private ShowPDOAnswerService $answerService;
+    private StorePDOAnswerService $answerService;
+
 
     public function __construct(
         ShowPDOQuestionService $questionService,
-        ShowPDOAnswerService  $answerService
+        StorePDOAnswerService $answerService
     )
     {
         $this->questionService = $questionService;
@@ -36,35 +39,29 @@ class TestController
     {
         $questions = $this->questionService->handle();
 
-
-            //var_dump($answers);die;
-
-
         return new TwigView('Tests/test3', [
            'questions' => $questions,
-           // 'answers' => $answers
         ]);
     }
 
     public function storeAnswersTest3(): Redirect
     {
+        var_dump($_POST);die;
+        $this->answerService->handle(
+            new StorePDOAnswerRequest(
+                $_POST['answer1'],
+                $_POST['answer2'],
+                $_POST['answer3'],
+                $_POST['answer4'],
+                $_POST['answer5'],
+                $_POST['answer6'],
+                $_POST['answer7'],
+                $_POST['answer8'],
+                $_POST['answer9'],
+                $_POST['answer10'],
+            )
+        );
 
         return new Redirect('/');
     }
 }
-
-/*
- *  $answers = [];
-
-        foreach ($questions as $question) {
-            @var  Question $question
-$questionAnswers = $this->answerService->handle($question->getQuestionId());
-
-$questionWithAnswers =[
-    'question' => $question,
-    'answers' => $questionAnswers,
-];
-
-$answers[] = $questionWithAnswers;
-}
-*/

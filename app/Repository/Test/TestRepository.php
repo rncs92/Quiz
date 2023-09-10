@@ -2,9 +2,13 @@
 
 namespace Vendon\Repository\Test;
 
+use Vendon\Models\Answer;
+
 interface TestRepository
 {
     public function allQuestions(): array;
 
     public function byQuestionId(int $questionId): array;
+
+    public function save(Answer $answer, int $userId): void;
 }
