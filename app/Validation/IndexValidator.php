@@ -18,8 +18,8 @@ class IndexValidator
             $this->errors['username'][] = 'Vārdam ir jābūt vismaz 2 simbols garam!';
         }
 
-        if (!strlen($fields['tests'])) {
-            $this->errors['tests'][] = 'Lūdzu izvēlieties testu!';
+        if (!strlen($fields['test'])) {
+            $this->errors['test'][] = 'Lūdzu izvēlieties testu!';
         }
 
         if (count($this->errors) > 0) {
