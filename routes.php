@@ -10,5 +10,6 @@ return [
     //Tests
     ['GET', '/test', [TestController::class, 'index']],
     ['POST', '/test', [TestController::class, 'storeTestAnswers']],
-
+    //Results
+    ['GET', '/results', [TestController::class, 'index']],
 ];

@@ -7,23 +7,22 @@ class Question
 
     private int $questionId;
     private string $question;
+    private string $correctAnswer;
     private string $answer1;
     private string $answer2;
     private ?string $answer3;
     private ?string $answer4;
     private ?string $answer5;
-    private string $correctAnswer;
 
     public function __construct(
         int    $questionId,
         string $question,
+        string $correctAnswer,
         string $answer1,
         string $answer2,
         string $answer3 = null,
         string $answer4 = null,
-        string $answer5 = null,
-        string $correctAnswer
-
+        string $answer5 = null
     )
     {
 
@@ -45,6 +44,11 @@ class Question
     public function getQuestion(): string
     {
         return $this->question;
+    }
+
+    public function getCorrectAnswer(): string
+    {
+        return $this->correctAnswer;
     }
 
     public function getAnswer1(): string
@@ -70,10 +74,5 @@ class Question
     public function getAnswer5(): ?string
     {
         return $this->answer5;
-    }
-
-    public function getCorrectAnswer(): string
-    {
-        return $this->correctAnswer;
     }
 }

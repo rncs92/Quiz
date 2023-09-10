@@ -5,27 +5,27 @@ namespace Vendon\Models;
 class Answer
 {
     private string $answer1;
-    private string $answer2;
-    private string $answer3;
-    private string $answer4;
-    private string $answer5;
-    private string $answer6;
-    private string $answer7;
-    private string $answer8;
-    private string $answer9;
-    private string $answer10;
+    private ?string $answer2;
+    private ?string $answer3;
+    private ?string $answer4;
+    private ?string $answer5;
+    private ?string $answer6;
+    private ?string $answer7;
+    private ?string $answer8;
+    private ?string $answer9;
+    private ?string $answer10;
 
     public function __construct(
         string $answer1,
-        string $answer2,
-        string $answer3,
-        string $answer4,
-        string $answer5,
-        string $answer6,
-        string $answer7,
-        string $answer8,
-        string $answer9,
-        string $answer10
+        string $answer2 = null,
+        string $answer3 = null,
+        string $answer4 = null,
+        string $answer5 = null,
+        string $answer6 = null,
+        string $answer7 = null,
+        string $answer8 = null,
+        string $answer9 = null,
+        string $answer10 = null
     )
     {
         $this->answer1 = $answer1;
@@ -45,47 +45,47 @@ class Answer
         return $this->answer1;
     }
 
-    public function getAnswer2(): string
+    public function getAnswer2(): ?string
     {
         return $this->answer2;
     }
 
-    public function getAnswer3(): string
+    public function getAnswer3(): ?string
     {
         return $this->answer3;
     }
 
-    public function getAnswer4(): string
+    public function getAnswer4(): ?string
     {
         return $this->answer4;
     }
 
-    public function getAnswer5(): string
+    public function getAnswer5(): ?string
     {
         return $this->answer5;
     }
 
-    public function getAnswer6(): string
+    public function getAnswer6(): ?string
     {
         return $this->answer6;
     }
 
-    public function getAnswer7(): string
+    public function getAnswer7(): ?string
     {
         return $this->answer7;
     }
 
-    public function getAnswer8(): string
+    public function getAnswer8(): ?string
     {
         return $this->answer8;
     }
 
-    public function getAnswer9(): string
+    public function getAnswer9(): ?string
     {
         return $this->answer9;
     }
 
-    public function getAnswer10(): string
+    public function getAnswer10(): ?string
     {
         return $this->answer10;
     }

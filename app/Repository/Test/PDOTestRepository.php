@@ -95,12 +95,12 @@ class PDOTestRepository implements TestRepository
         return new Question(
             (int)$question['question_id'],
             $question['question'],
+            $question['correct_answer'],
             $question['answer1'],
             $question['answer2'],
             $question['answer3'],
             $question['answer4'],
             $question['answer5'],
-            $question['correct_answer'],
         );
     }
 

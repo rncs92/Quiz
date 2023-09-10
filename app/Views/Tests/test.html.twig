@@ -26,7 +26,7 @@
     <h1 class="font-bold text-4xl p-4 mb-8">Āķīgie jautājumi</h1>
 </div>
 <div id="quiz-container" class="flex justify-center">
-    <form id="quiz-form" action="/test3" method="POST">
+    <form id="quiz-form" action="/test" method="POST">
         {% for question in questions %}
             <div class="question" id="{{ question.questionid }}" style="display: none;">
                 <div class="flex justify-center border-2 rounded-xl p-8 border-gray-300 bg-gray-100 w-1/2">
