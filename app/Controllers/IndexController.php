@@ -26,6 +26,9 @@ class IndexController
 
     public function index(): TwigView
     {
+        Session::unflash('user_id');
+        Session::unflash('test');
+
         return new TwigView('index', []);
     }
 

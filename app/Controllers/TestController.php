@@ -3,6 +3,7 @@
 namespace Vendon\Controllers;
 
 use Vendon\Core\Redirect;
+use Vendon\Core\Session;
 use Vendon\Core\TwigView;
 use Vendon\Services\Test3\Show\ShowPDOQuestionService;
 use Vendon\Services\Test3\Store\StorePDOAnswerRequest;
@@ -24,6 +25,11 @@ class TestController
 
     public function index(): TwigView
     {
+
+        if (!Session::get('test')) {
+            return new TwigView('Errors/notAuthorized', []);
+        }
+
         $questions = $this->questionService->handle();
 
         return new TwigView("Tests/test", [
