@@ -25,64 +25,64 @@
 <div class="flex justify-center items-center w-full mt-10">
     <h1 class="font-semibold text-3xl p-4 mb-8">Izvēlieties pareizo atbildi</h1>
 </div>
-<div id="quiz-container" class="flex justify-center">
-    <form id="quiz-form" action="/test" method="POST">
+<div id="quiz-container" class="flex justify-center h-screen">
+    <form class="w-1/2" id="quiz-form" action="/test" method="POST">
         {% for question in questions %}
             <div class="question" id="{{ question.questionid }}" style="display: none;">
-                <div class="flex justify-center border-2 rounded-xl p-8 border-gray-300 bg-gray-100 w-1/2">
-                    <p class="flex justify-center text-2xl">{{ question.question }}</p>
+                <div class="border-2 rounded-xl p-8 border-gray-300 bg-gray-100">
+                    <p class="text-2xl text-center">{{ question.question }}</p>
                 </div>
                 <!-- Display answer options for the current question only -->
-                <div class="flex justify-center p-4">
+                <div class="p-4">
                     <ul>
-                        <li>
-                            <label class="inline-flex items-center">
+                        <li class="flex justify-center">
+                            <label class="flex justify-center w-1/2 mb-3 border-l-8 bg-blue-50 border-black drop-shadow-lg transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-emerald-600 active:bg-emerald-800 cursor-pointer">
                                 <input type="radio" name="question{{ loop.index }}_answer"
                                        value="{{ question.answer1 }}" class="hidden">
-                                <span class="bg-gray-200 hover:bg-gray-300 py-2 px-4 rounded-lg cursor-pointer">
-                                        {{ question.answer1 }}
-                                    </span>
+                                <span class="py-2 px-4">
+                                    {{ question.answer1 }}
+                                </span>
                             </label>
                         </li>
-                        <li>
-                            <label class="inline-flex items-center">
+                        <li class="flex justify-center">
+                            <label class="flex justify-center w-1/2 mb-3 border-l-8 bg-blue-50 border-black drop-shadow-lg transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-emerald-600 active:bg-emerald-800 cursor-pointer">
                                 <input type="radio" name="question{{ loop.index }}_answer"
                                        value="{{ question.answer2 }}" class="hidden">
-                                <span class="bg-gray-200 hover:bg-gray-300 py-2 px-4 rounded-lg cursor-pointer">
-                                        {{ question.answer2 }}
-                                    </span>
+                                <span class="py-2 px-4">
+                                    {{ question.answer2 }}
+                                </span>
                             </label>
                         </li>
                         {% if question.answer3 %}
-                            <li>
-                                <label class="inline-flex items-center">
+                            <li class="flex justify-center">
+                                <label class="flex justify-center w-1/2 mb-3 border-l-8 bg-blue-50 border-black drop-shadow-lg transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-emerald-600 active:bg-emerald-800 cursor-pointer">
                                     <input type="radio" name="question{{ loop.index }}_answer"
                                            value="{{ question.answer3 }}" class="hidden">
-                                    <span class="bg-gray-200 hover:bg-gray-300 py-2 px-4 rounded-lg cursor-pointer">
-                                            {{ question.answer3 }}
-                                        </span>
+                                    <span class="py-2 px-4">
+                                        {{ question.answer3 }}
+                                    </span>
                                 </label>
                             </li>
                         {% endif %}
                         {% if question.answer4 %}
-                            <li>
-                                <label class="inline-flex items-center">
+                            <li class="flex justify-center">
+                                <label class="flex justify-center w-1/2 mb-3 border-l-8 bg-blue-50 border-black drop-shadow-lg transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-emerald-600 active:bg-emerald-800 cursor-pointer">
                                     <input type="radio" name="question{{ loop.index }}_answer"
                                            value="{{ question.answer4 }}" class="hidden">
-                                    <span class="bg-gray-200 hover:bg-gray-300 py-2 px-4 rounded-lg cursor-pointer">
-                                            {{ question.answer4 }}
-                                        </span>
+                                    <span class="py-2 px-4">
+                                        {{ question.answer4 }}
+                                    </span>
                                 </label>
                             </li>
                         {% endif %}
                         {% if question.answer5 %}
-                            <li>
-                                <label class="inline-flex items-center">
+                            <li class="flex justify-center">
+                                <label class="flex justify-center w-1/2 mb-3 border-l-8 bg-blue-50 border-black drop-shadow-lg transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-emerald-600 active:bg-emerald-800 cursor-pointer">
                                     <input type="radio" name="question{{ loop.index }}_answer"
                                            value="{{ question.answer5 }}" class="hidden">
-                                    <span class="bg-gray-200 hover:bg-gray-300 py-2 px-4 rounded-lg cursor-pointer">
-                                            {{ question.answer5 }}
-                                        </span>
+                                    <span class="py-2 px-4">
+                                        {{ question.answer5 }}
+                                    </span>
                                 </label>
                             </li>
                         {% endif %}
