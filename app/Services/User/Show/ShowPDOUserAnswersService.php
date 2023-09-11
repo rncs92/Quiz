@@ -2,7 +2,6 @@
 
 namespace Vendon\Services\User\Show;
 
-use Vendon\Models\Answer;
 use Vendon\Repository\User\UserRepository;
 
 class ShowPDOUserAnswersService

@@ -6,7 +6,6 @@ use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Query\QueryBuilder;
 use Vendon\Core\Database;
 use Vendon\Core\Session;
-use Vendon\Models\Answer;
 use Vendon\Models\User;
 
 class PDOUserRepository implements UserRepository
