@@ -8,6 +8,7 @@ class ResultsController
 {
     public function index(): TwigView
     {
+
         return new TwigView('results', []);
     }
 }

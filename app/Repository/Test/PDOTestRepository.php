@@ -4,7 +4,6 @@ namespace Vendon\Repository\Test;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Query\QueryBuilder;
-use PDO;
 use Vendon\Core\Database;
 use Vendon\Models\Answer;
 use Vendon\Models\Question;
@@ -58,7 +57,6 @@ class PDOTestRepository implements TestRepository
 
     public function save(Answer $answer, int $userId): void
     {
-
         $queryBuilder = $this->queryBuilder;
         $queryBuilder
             ->update('users')
@@ -85,7 +83,6 @@ class PDOTestRepository implements TestRepository
             ->setParameter(9, $answer->getAnswer10())
             ->setParameter(10, $userId);
 
-
         $queryBuilder->executeStatement();
     }
 
@@ -102,5 +99,4 @@ class PDOTestRepository implements TestRepository
             $question['answer5'],
         );
     }
-
 }
