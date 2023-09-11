@@ -91,31 +91,44 @@
                 </div>
             </div>
         {% endfor %}
+        <div class="flex justify-center bg-gray-300 h-8 mt-4 mb-4">
+            <div id="progress-bar" class="bg-green-600 h-8"></div>
+        </div>
         <input type="submit" value="Submit" class="hidden">
     </form>
 </div>
 
 <script>
-    const questions = document.querySelectorAll('.question');
-    let currentQuestionIndex = 0;
+    document.addEventListener('DOMContentLoaded', function () {
+        const questions = document.querySelectorAll('.question');
+        const progressBar = document.getElementById('progress-bar');
+        let currentQuestionIndex = 0;
 
-    function showNextQuestion() {
-        if (currentQuestionIndex < questions.length - 1) {
-            questions[currentQuestionIndex].style.display = 'none';
-            currentQuestionIndex++;
-            questions[currentQuestionIndex].style.display = 'block';
-        } else {
-            document.getElementById('quiz-form').submit(); // Trigger the form submission
+        function showNextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                questions[currentQuestionIndex].style.display = 'none';
+                currentQuestionIndex++;
+                questions[currentQuestionIndex].style.display = 'block';
+                updateProgressBar();
+            } else {
+                document.getElementById('quiz-form').submit(); // Formas postošana
+            }
         }
-    }
 
-    // Initially, show the first question
-    questions[currentQuestionIndex].style.display = 'block';
+        // Sākuma state, lai rādītu pirmo jautājumu
+        questions[currentQuestionIndex].style.display = 'block';
 
-    // Add click event listeners to answer options to show the next question
-    const answerOptions = document.querySelectorAll('input[type="radio"]');
-    answerOptions.forEach(option => {
-        option.addEventListener('change', showNextQuestion);
+        // Event listeners, lai pārslēgtos uz nākošo jautājumu, pēc atbildēta jautājuma
+        const answerOptions = document.querySelectorAll('input[type="radio"]');
+        answerOptions.forEach(option => {
+            option.addEventListener('change', showNextQuestion);
+        });
+
+        // Funkcija, lai updatoitu progress bar
+        function updateProgressBar() {
+            const percentComplete = ((currentQuestionIndex + 1) / questions.length) * 100;
+            progressBar.style.width = percentComplete + '%';
+        }
     });
 </script>
 </body>
