@@ -85,6 +85,9 @@
                             </li>
                         {% endif %}
                     </ul>
+                    {% if errors.answers %}
+                        <span class="text-red-500">{{ errors.answers[0] }}</span>
+                    {% endif %}
                 </div>
             </div>
         {% endfor %}

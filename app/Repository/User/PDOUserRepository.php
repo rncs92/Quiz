@@ -6,6 +6,7 @@ use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Query\QueryBuilder;
 use Vendon\Core\Database;
 use Vendon\Core\Session;
+use Vendon\Models\Answer;
 use Vendon\Models\User;
 
 class PDOUserRepository implements UserRepository
@@ -50,6 +51,30 @@ class PDOUserRepository implements UserRepository
             ->fetchAssociative();
 
         return $this->buildModel($user);
+    }
+
+    public function getUserAnswers(int $userId): array
+    {
+        $queryBuilder = $this->queryBuilder;
+        $result = $queryBuilder
+            ->select(
+                'answer1',
+                'answer2',
+                'answer3',
+                'answer4',
+                'answer5',
+                'answer6',
+                'answer7',
+                'answer8',
+                'answer9',
+                'answer10'
+            )
+            ->from('users')
+            ->where('user_id = ?')
+            ->setParameter(0, $userId)
+            ->fetchAllAssociative();
+
+        return reset($result);
     }
 
     private function buildModel($user): User

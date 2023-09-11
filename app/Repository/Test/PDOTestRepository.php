@@ -36,7 +36,6 @@ class PDOTestRepository implements TestRepository
         return $questionCollection;
     }
 
-
     public function byQuestionId(int $questionId): array
     {
         $queryBuilder = $this->queryBuilder;
