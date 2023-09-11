@@ -2,6 +2,7 @@
 
 namespace Vendon\Services\Test3\Store;
 
+use Throwable;
 use Vendon\Models\Answer;
 use Vendon\Repository\Test\TestRepository;
 
@@ -35,9 +36,8 @@ class StorePDOAnswerService
             $this->testRepository->save($answer, $userId);
 
             return new StorePDOAnswerResponse($answer);
-        } catch (\Throwable $e) {
-            var_dump($e);
-            throw $e; // Rethrow the exception for debugging purposes
+        } catch (Throwable $e) {
+            throw $e;
         }
     }
 }
