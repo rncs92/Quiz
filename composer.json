@@ -18,6 +18,7 @@
         "vlucas/phpdotenv": "^5.5",
         "nesbot/carbon": "^2.69",
         "doctrine/dbal": "^3.6",
-      "ext-json": "*"
+      "ext-json": "*",
+      "ext-pdo": "*"
     }
 }

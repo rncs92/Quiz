@@ -26,6 +26,7 @@ class IndexController
 
     public function index(): TwigView
     {
+        Session::destroy();
         return new TwigView('index', []);
     }
 

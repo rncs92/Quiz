@@ -16,23 +16,28 @@ class StorePDOAnswerService
 
     public function handle(StorePDOAnswerRequest $request): StorePDOAnswerResponse
     {
-        $answer = new Answer(
-            $request->getAnswer1(),
-            $request->getAnswer2(),
-            $request->getAnswer3(),
-            $request->getAnswer4(),
-            $request->getAnswer5(),
-            $request->getAnswer6(),
-            $request->getAnswer7(),
-            $request->getAnswer8(),
-            $request->getAnswer9(),
-            $request->getAnswer10(),
-        );
+        try {
+            $answer = new Answer(
+                $request->getAnswer1(),
+                $request->getAnswer2(),
+                $request->getAnswer3(),
+                $request->getAnswer4(),
+                $request->getAnswer5(),
+                $request->getAnswer6(),
+                $request->getAnswer7(),
+                $request->getAnswer8(),
+                $request->getAnswer9(),
+                $request->getAnswer10(),
+            );
 
-        $userId = $_SESSION['user_id'];
+            $userId = $_SESSION['user_id'];
 
-        $this->testRepository->save($answer, $userId);
+            $this->testRepository->save($answer, $userId);
 
-        return new StorePDOAnswerResponse($answer);
+            return new StorePDOAnswerResponse($answer);
+        } catch (\Throwable $e) {
+            var_dump($e);
+            throw $e; // Rethrow the exception for debugging purposes
+        }
     }
 }

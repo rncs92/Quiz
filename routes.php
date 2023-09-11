@@ -1,6 +1,7 @@
 <?php
 
 use Vendon\Controllers\IndexController;
+use Vendon\Controllers\ResultsController;
 use Vendon\Controllers\TestController;
 
 return [
@@ -11,5 +12,5 @@ return [
     ['GET', '/test', [TestController::class, 'index']],
     ['POST', '/test', [TestController::class, 'storeTestAnswers']],
     //Results
-    ['GET', '/results', [TestController::class, 'index']],
+    ['GET', '/results', [ResultsController::class, 'index']],
 ];

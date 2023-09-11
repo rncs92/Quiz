@@ -36,15 +36,15 @@ class TestController
         $this->answerService->handle(
             new StorePDOAnswerRequest(
                 $_POST['question1_answer'],
-                $_POST['question2_answer'],
-                $_POST['question3_answer'],
-                $_POST['question4_answer'],
-                $_POST['question5_answer'],
-                $_POST['question6_answer'],
-                $_POST['question7_answer'],
-                $_POST['question8_answer'],
-                $_POST['question9_answer'],
-                $_POST['question10_answer'],
+                $_POST['question2_answer'] ?? null,
+                $_POST['question3_answer'] ?? null,
+                $_POST['question4_answer'] ?? null,
+                $_POST['question5_answer'] ?? null,
+                $_POST['question6_answer'] ?? null,
+                $_POST['question7_answer'] ?? null,
+                $_POST['question8_answer'] ?? null,
+                $_POST['question9_answer'] ?? null,
+                $_POST['question10_answer'] ?? null,
             )
         );
 
