@@ -60,6 +60,7 @@ class PDOTestRepository implements TestRepository
         $queryBuilder = $this->queryBuilder;
         $queryBuilder
             ->update('users')
+            ->where('user_id = ?')
             ->set('answer1', '?')
             ->set('answer2', '?')
             ->set('answer3', '?')
@@ -70,20 +71,20 @@ class PDOTestRepository implements TestRepository
             ->set('answer8', '?')
             ->set('answer9', '?')
             ->set('answer10', '?')
-            ->where('user_id => ?')
-            ->setParameter(0, $answer->getAnswer1())
-            ->setParameter(1, $answer->getAnswer2())
-            ->setParameter(2, $answer->getAnswer3())
-            ->setParameter(3, $answer->getAnswer4())
-            ->setParameter(4, $answer->getAnswer5())
-            ->setParameter(5, $answer->getAnswer6())
-            ->setParameter(6, $answer->getAnswer7())
-            ->setParameter(7, $answer->getAnswer8())
-            ->setParameter(8, $answer->getAnswer9())
-            ->setParameter(9, $answer->getAnswer10())
-            ->setParameter(10, $userId);
+            ->setParameter(0, $userId)
+            ->setParameter(1, $answer->getAnswer1())
+            ->setParameter(2, $answer->getAnswer2())
+            ->setParameter(3, $answer->getAnswer3())
+            ->setParameter(4, $answer->getAnswer4())
+            ->setParameter(5, $answer->getAnswer5())
+            ->setParameter(6, $answer->getAnswer6())
+            ->setParameter(7, $answer->getAnswer7())
+            ->setParameter(8, $answer->getAnswer8())
+            ->setParameter(9, $answer->getAnswer9())
+            ->setParameter(10, $answer->getAnswer10());
 
-        $queryBuilder->executeQuery();
+
+        $queryBuilder->executeStatement();
     }
 
     private function buildQuestionModel($question): Question
