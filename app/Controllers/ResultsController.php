@@ -3,12 +3,27 @@
 namespace Vendon\Controllers;
 
 use Vendon\Core\TwigView;
+use Vendon\Services\User\Show\ShowPDOUserService;
 
 class ResultsController
 {
-    public function index(): TwigView
+
+    private ShowPDOUserService $userService;
+
+    public function __construct(ShowPDOUserService $userService)
     {
 
-        return new TwigView('results', []);
+        $this->userService = $userService;
+    }
+
+    public function index(): TwigView
+    {
+        $user = $this->userService->handle();
+        $userName = substr($user->getUsername(), 0, -1);
+
+        return new TwigView('results', [
+            'user' => $user,
+            'userName' => $userName
+        ]);
     }
 }

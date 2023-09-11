@@ -1,8 +1,7 @@
 <?php declare(strict_types=1);
 
-namespace Vendon\Services\Authorization;
+namespace Vendon\Services\User\Authorization;
 
-use Vendon\Core\Session;
 use Vendon\Models\User;
 use Vendon\Repository\User\UserRepository;
 

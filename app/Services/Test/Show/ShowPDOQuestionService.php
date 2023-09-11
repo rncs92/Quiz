@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Vendon\Services\Test3\Show;
+namespace Vendon\Services\Test\Show;
 
 use Vendon\Exceptions\ResourceNotFoundException;
 use Vendon\Repository\Test\TestRepository;

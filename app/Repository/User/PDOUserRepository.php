@@ -38,4 +38,26 @@ class PDOUserRepository implements UserRepository
         Session::put('user_id', (int)$this->connection->lastInsertId());
         $user->setUserId((int)$this->connection->lastInsertId());
     }
+
+    public function getById(int $userId): User
+    {
+        $queryBuilder = $this->queryBuilder;
+        $user = $queryBuilder
+            ->select('*')
+            ->from('users')
+            ->where('user_id = ?')
+            ->setParameter(0, $userId)
+            ->fetchAssociative();
+
+        return $this->buildModel($user);
+    }
+
+    private function buildModel($user): User
+    {
+        return new User(
+            $user['username'],
+            $user['test'],
+            (int)$user['user_id']
+        );
+    }
 }

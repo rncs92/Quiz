@@ -5,9 +5,9 @@ namespace Vendon\Controllers;
 use Vendon\Core\Redirect;
 use Vendon\Core\Session;
 use Vendon\Core\TwigView;
-use Vendon\Services\Test3\Show\ShowPDOQuestionService;
-use Vendon\Services\Test3\Store\StorePDOAnswerRequest;
-use Vendon\Services\Test3\Store\StorePDOAnswerService;
+use Vendon\Services\Test\Show\ShowPDOQuestionService;
+use Vendon\Services\Test\Store\StorePDOAnswerRequest;
+use Vendon\Services\Test\Store\StorePDOAnswerService;
 
 class TestController
 {

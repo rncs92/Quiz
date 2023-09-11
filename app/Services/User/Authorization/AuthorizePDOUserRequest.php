@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Vendon\Services\Authorization;
+namespace Vendon\Services\User\Authorization;
 
 class AuthorizePDOUserRequest
 {
