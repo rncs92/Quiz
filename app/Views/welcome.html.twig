@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Vendon</title>
+</head>
+<body class="bg-gray-200 w-screen h-screen">
+
+<section class="relative mx-auto w-fit">
+    <nav class="flex justify-between bg-cyan-800 text-white w-screen">
+        <div class="px-5 xl:px-12 py-6 flex w-full items-center">
+            <a class="text-3xl font-bold font-heading" href="/">
+                <img src="https://vendon.net/wp-content/uploads/2021/06/Logo_Header-1.svg" width="200" height="46"
+                     class="attachment-full size-full wp-image-2389 astra-logo-svg" loading="lazy" alt="Vendon">
+            </a>
+        </div>
+    </nav>
+</section>
+
+<div class="container my-24 px-6 mx-auto">
+    <section class="mb-32 text-gray-800 text-center">
+        <div class="px-6 py-12 md:px-12">
+            <div class="grid grid-cols-2 gap-12 flex items-center">
+                <div>
+                    <h1 class="text-5xl font-bold tracking-tight leading-tight mb-12">
+                        Pārbaudi savas zināšnas <br/><span class="text-lime-600">un liec to darīt citiem</span>
+                    </h1>
+                    <p class="text-gray-600">
+                        Esiet sveicināts mūsu testu platformā! Vai esi gatavs pārbaudīt savas zināšanas un
+                        dot iespēju to izdarīt citiem? Tad Tu esi atradis īsto vietu. Mēs Jums piedāvāsim pārbaudīt
+                        savas zināšanas un pildīt citu lietotāju testus, Kā arī dosim iespēju izveidot savus testus,
+                        jebkuram Jūsu izvēlētam mērķim - darbam, izklaidei, aptaujai vai zināšanu pārbaudei.
+                        Jūs esat atradis īsto vietu!
+                    </p>
+                </div>
+                <div class="mb-12 mb-2">
+                    <div class="block rounded-lg shadow-lg bg-white px-6 py-12 px-12">
+                        <form method="POST" action="/welcome">
+                            <div class="grid grid-cols-2 gap-6">
+                                <div class="mb-6">
+                                    <label for="name">
+                                        <input type="text" id="name" name="name"
+                                               class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white drop-shadow bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                               placeholder="Vārds"/>
+                                    </label>
+                                </div>
+                                <div class="mb-6">
+                                    <label for="surname">
+                                        <input type="text" id="surname" name="surname"
+                                               class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white drop-shadow bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                               placeholder="Uzvārds"/>
+                                    </label>
+                                </div>
+                            </div>
+                            <label for="email">
+                                <input type="email" id="email" name="email"
+                                       class="form-control block w-full px-3 py-1.5 mb-6 text-base font-normal text-gray-700 bg-white drop-shadow bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                       placeholder="E-pasts"/>
+                            </label>
+                            <label for="password">
+                                <input type="password" id="password" name="password"
+                                       class="form-control block w-full px-3 py-1.5 mb-6 text-base font-normal text-gray-700 bg-white drop-shadow bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                       placeholder="Parole"/>
+                            </label>
+                            <button type="submit"
+                                    class="inline-block px-6 py-2.5 mb-6 w-2/3 bg-lime-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-lime-700 hover:shadow-lg focus:bg-lime-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-lime-800 active:shadow-lg transition duration-150 ease-in-out">
+                                Reģistrēties
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+</html>

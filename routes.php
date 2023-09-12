@@ -3,8 +3,11 @@
 use Vendon\Controllers\IndexController;
 use Vendon\Controllers\ResultsController;
 use Vendon\Controllers\TestController;
+use Vendon\Controllers\WelcomeController;
 
 return [
+    //Welcome
+    ['GET', '/welcome', [WelcomeController::class, 'index']],
     //Authorization
     ['GET', '/', [IndexController::class, 'index']],
     ['POST', '/', [IndexController::class, 'store']],
