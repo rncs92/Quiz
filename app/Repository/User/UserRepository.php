@@ -9,6 +9,8 @@ interface UserRepository
 {
     public function save(User $user): void;
 
+    public function login(string $email, string $password): ?User;
+
     public function getById(int $userId): User;
 
     public function getUserAnswers(int $userId): array;
