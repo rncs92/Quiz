@@ -26,17 +26,35 @@ class PDOUserRepository implements UserRepository
             ->insert('users')
             ->values(
                 [
-                    'username' => '?',
-                    'test' => '?'
+                    'name' => '?',
+                    'surname' => '?',
+                    'email' => '?',
+                    'password' => '?',
                 ]
             )
-            ->setParameter(0, $user->getUsername())
-            ->setParameter(1, $user->getTest());
+            ->setParameter(0, $user->getName())
+            ->setParameter(1, $user->getSurname())
+            ->setParameter(1, $user->getEmail())
+            ->setParameter(1, $user->getPassword());
 
         $queryBuilder->executeQuery();
 
-        Session::put('user_id', (int)$this->connection->lastInsertId());
         $user->setUserId((int)$this->connection->lastInsertId());
+    }
+    public function byEmail(string $email): ?User
+    {
+        $queryBuilder = $this->queryBuilder;
+        $user = $queryBuilder->select('*')
+            ->from('users')
+            ->where('email = ?')
+            ->setParameter(0, $email)
+            ->fetchAssociative();
+
+        if (!$user) {
+            return null;
+        }
+
+        return $this->buildModel($user);
     }
 
     public function getById(int $userId): User
@@ -79,8 +97,10 @@ class PDOUserRepository implements UserRepository
     private function buildModel($user): User
     {
         return new User(
-            $user['username'],
-            $user['test'],
+            $user['name'],
+            $user['surname'],
+            $user['email'],
+            $user['password'],
             (int)$user['user_id']
         );
     }
