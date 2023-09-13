@@ -1,29 +1,28 @@
 <?php declare(strict_types=1);
 
-namespace Vendon\Models;
+namespace Vendon\Services\User\Register;
 
-class User
+class RegisterPDOUserRequest
 {
     private string $name;
     private string $surname;
     private string $email;
     private string $password;
     private string $confirmPassword;
-    private ?int $userId;
 
     public function __construct(
         string $name,
         string $surname,
         string $email,
         string $password,
-        int    $userId = null
+        string $confirmPassword
     )
     {
         $this->name = $name;
         $this->surname = $surname;
         $this->email = $email;
         $this->password = $password;
-        $this->userId = $userId;
+        $this->confirmPassword = $confirmPassword;
     }
 
     public function getName(): string
@@ -46,14 +45,8 @@ class User
         return $this->password;
     }
 
-    public function getUserId(): ?int
+    public function getConfirmPassword(): string
     {
-        return $this->userId;
+        return $this->confirmPassword;
     }
-
-    public function setUserId(?int $userId): void
-    {
-        $this->userId = $userId;
-    }
-
 }

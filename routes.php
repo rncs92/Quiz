@@ -7,10 +7,10 @@ use Vendon\Controllers\WelcomeController;
 
 return [
     //Welcome
-    ['GET', '/welcome', [WelcomeController::class, 'index']],
+    ['GET', '/', [WelcomeController::class, 'index']],
     //Authorization
-    ['GET', '/', [IndexController::class, 'index']],
-    ['POST', '/', [IndexController::class, 'store']],
+    ['GET', '/index', [IndexController::class, 'index']],
+    ['POST', '/index', [IndexController::class, 'store']],
     //Tests
     ['GET', '/test', [TestController::class, 'index']],
     ['POST', '/test', [TestController::class, 'storeTestAnswers']],

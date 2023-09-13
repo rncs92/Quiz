@@ -47,7 +47,7 @@ class IndexController
 
             return new Redirect("test");
         } catch (ValidationException $exception) {
-            return new Redirect('/');
+            return new Redirect('/index');
         }
     }
 }
