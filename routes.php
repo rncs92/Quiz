@@ -19,7 +19,7 @@ return [
     ['POST', '/login', [LoginController::class, 'login']],
     ['POST', '/logout', [LoginController::class, 'logout']],
 
-    //Tests
+    //Quiz
     ['GET', '/test', [TestController::class, 'index']],
     //Create test
     ['GET', '/create', [TestController::class, 'index']],

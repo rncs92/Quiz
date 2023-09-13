@@ -12,6 +12,6 @@ class CreateController
         if (!Session::get('user')) {
             return new TwigView('User/login', []);
         }
-        return new TwigView('index', []);
+        return new TwigView('Quiz/create', []);
     }
 }

@@ -32,7 +32,7 @@ class TestController
 
         $questions = $this->questionService->handle();
 
-        return new TwigView("Tests/test", [
+        return new TwigView("Quiz/quiz", [
             'questions' => $questions,
         ]);
     }
@@ -54,6 +54,6 @@ class TestController
             )
         );
 
-        return new Redirect('/results');
+        return new Redirect('Quiz/results');
     }
 }
