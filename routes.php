@@ -2,6 +2,7 @@
 
 use Vendon\Controllers\Index\IndexController;
 use Vendon\Controllers\Index\WelcomeController;
+use Vendon\Controllers\Quiz\CreateController;
 use Vendon\Controllers\Quiz\ResultsController;
 use Vendon\Controllers\Quiz\TestController;
 use Vendon\Controllers\User\LoginController;
@@ -22,7 +23,7 @@ return [
     //Quiz
     ['GET', '/test', [TestController::class, 'index']],
     //Create test
-    ['GET', '/create', [TestController::class, 'index']],
+    ['GET', '/create', [CreateController::class, 'index']],
     //Complete test
     ['POST', '/test', [TestController::class, 'storeTestAnswers']],
     //Results
