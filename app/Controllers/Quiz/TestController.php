@@ -1,13 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace Vendon\Controllers;
+namespace Vendon\Controllers\Quiz;
 
 use Vendon\Core\Redirect;
 use Vendon\Core\Session;
 use Vendon\Core\TwigView;
-use Vendon\Services\Test\Show\ShowPDOQuestionService;
-use Vendon\Services\Test\Store\StorePDOAnswerRequest;
-use Vendon\Services\Test\Store\StorePDOAnswerService;
+use Vendon\Services\Quiz\Show\ShowPDOQuestionService;
+use Vendon\Services\Quiz\Store\StorePDOAnswerRequest;
+use Vendon\Services\Quiz\Store\StorePDOAnswerService;
 
 class TestController
 {

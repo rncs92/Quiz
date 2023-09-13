@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Vendon\Services\Test\Show;
+namespace Vendon\Services\Quiz\Show;
 
 use Vendon\Exceptions\ResourceNotFoundException;
-use Vendon\Repository\Test\TestRepository;
+use Vendon\Repository\Quiz\TestRepository;
 
 class ShowPDOQuestionService
 {

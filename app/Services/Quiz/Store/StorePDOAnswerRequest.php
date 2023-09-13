@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Vendon\Services\Test\Store;
+namespace Vendon\Services\Quiz\Store;
 
 class StorePDOAnswerRequest
 {

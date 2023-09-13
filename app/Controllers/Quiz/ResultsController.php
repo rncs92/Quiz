@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Vendon\Controllers;
+namespace Vendon\Controllers\Quiz;
 
 use Vendon\Core\TwigView;
 use Vendon\Models\Question;
-use Vendon\Services\Test\Show\ShowPDOQuestionService;
+use Vendon\Services\Quiz\Show\ShowPDOQuestionService;
 use Vendon\Services\User\Show\ShowPDOUserAnswersService;
 use Vendon\Services\User\Show\ShowPDOUserService;
 
@@ -28,7 +28,7 @@ class ResultsController
     public function index(): TwigView
     {
         $user = $this->userService->handle();
-        $userName = substr($user->getUsername(), 0, -1);
+        $userName = substr($user->getName(), 0, -1);
 
         $userAnswers = $this->answersService->handle();
         $questions = $this->questionService->handle();

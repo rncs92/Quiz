@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Vendon\Services\Test\Store;
+namespace Vendon\Services\Quiz\Store;
 
 use Throwable;
 use Vendon\Models\Answer;
-use Vendon\Repository\Test\TestRepository;
+use Vendon\Repository\Quiz\TestRepository;
 
 class StorePDOAnswerService
 {

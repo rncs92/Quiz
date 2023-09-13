@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
-use Vendon\Repository\Test\TestRepository;
-use Vendon\Repository\Test\PDOTestRepository;
+use Vendon\Repository\Quiz\TestRepository;
+use Vendon\Repository\Quiz\PDOTestRepository;
 use Vendon\Repository\User\PDOUserRepository;
 use Vendon\Repository\User\UserRepository;
 

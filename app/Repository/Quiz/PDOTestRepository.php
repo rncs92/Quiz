@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Vendon\Repository\Test;
+namespace Vendon\Repository\Quiz;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Query\QueryBuilder;

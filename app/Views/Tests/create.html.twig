@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Vendon | Sākums</title>
+    <title>Vendon | Izveidot</title>
 </head>
 <body class="bg-gray-200 w-screen h-screen">
 <section class="relative mx-auto w-fit">
@@ -42,44 +42,3 @@
         </div>
     </nav>
 </section>
-<div class="flex justify-center items-center w-full mt-10">
-    <h1 class="font-bold text-4xl">Testa uzdevums</h1>
-</div>
-<form method="POST" action="/index">
-    <div class="flex justify-center w-screen">
-        <div class="w-1/4">
-            <label for="username" class="flex justify-center"></label>
-            <input id="username"
-                   name="username"
-                   class="mt-4 w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5"
-                   placeholder="Ievadiet savu vārdu">
-            {% if errors.username %}
-                <span class="text-red-500">{{ errors.username[0] }}</span>
-            {% endif %}
-        </div>
-    </div>
-    <div class="flex justify-center w-screen">
-        <div class="w-1/4">
-            <label for="test" class="flex justify-center block mb-2 text-sm font-medium text-gray-900"></label>
-            <select id="test"
-                    name="test"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                <option value="">Izvēlies testu</option>
-                <option value="test1">Ko Tu zini par Vendon?</option>
-                <option value="test2">Sen aizmirstie apgērbu nosaukumi</option>
-                <option value="test3">Āķīgie jautājumi</option>
-            </select>
-            {% if errors.test %}
-                <span class="text-red-500">{{ errors.test[0] }}</span>
-            {% endif %}
-        </div>
-    </div>
-    <div class="flex justify-center w-screen">
-        <button type="submit"
-                class="flex items-center mt-2 rounded-md bg-white py-2 pl-3 pr-4 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-            Sākt testu!
-        </button>
-    </div>
-</form>
-</body>
-</html>
