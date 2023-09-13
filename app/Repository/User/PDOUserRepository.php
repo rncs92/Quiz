@@ -33,8 +33,8 @@ class PDOUserRepository implements UserRepository
             )
             ->setParameter(0, $user->getName())
             ->setParameter(1, $user->getSurname())
-            ->setParameter(1, $user->getEmail())
-            ->setParameter(1, $user->getPassword());
+            ->setParameter(2, $user->getEmail())
+            ->setParameter(3, $user->getPassword());
 
         $queryBuilder->executeQuery();
 

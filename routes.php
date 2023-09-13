@@ -1,11 +1,11 @@
 <?php
 
-use Vendon\Controllers\IndexController;
+use Vendon\Controllers\Index\IndexController;
+use Vendon\Controllers\Index\WelcomeController;
 use Vendon\Controllers\ResultsController;
 use Vendon\Controllers\TestController;
 use Vendon\Controllers\User\LoginController;
 use Vendon\Controllers\User\RegisterController;
-use Vendon\Controllers\WelcomeController;
 
 return [
     //Welcome
@@ -17,7 +17,6 @@ return [
     ['POST', '/logout', [LoginController::class, 'logout']],
 
     ['GET', '/index', [IndexController::class, 'index']],
-    ['POST', '/index', [RegisterController::class, 'store']],
     //Tests
     ['GET', '/test', [TestController::class, 'index']],
     ['POST', '/test', [TestController::class, 'storeTestAnswers']],

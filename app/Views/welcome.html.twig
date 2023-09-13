@@ -47,7 +47,7 @@
                                                class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white drop-shadow bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                                placeholder="Vārds"/>
                                         {% if errors.name %}
-                                            <span class="text-red-500">{{ errors.name[0] }}</span>
+                                            <span class="text-red-500 text-sm">{{ errors.name[0] }}</span>
                                         {% endif %}
                                     </label>
                                 </div>
@@ -57,40 +57,42 @@
                                                class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white drop-shadow bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                                placeholder="Uzvārds"/>
                                         {% if errors.surname %}
-                                            <span class="text-red-500">{{ errors.surname[0] }}</span>
+                                            <span class="text-red-500 text-sm">{{ errors.surname[0] }}</span>
                                         {% endif %}
                                     </label>
                                 </div>
                             </div>
                             <label for="email">
                                 <input type="email" id="email" name="email"
-                                       class="form-control block w-full px-3 py-1.5 mb-6 text-base font-normal text-gray-700 bg-white drop-shadow bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                       class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white drop-shadow bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                        placeholder="E-pasts"/>
                                 {% if errors.email %}
-                                    <span class="text-red-500">{{ errors.email[0] }}</span>
+                                    <span class="text-red-500 text-sm">{{ errors.email[0] }}</span>
                                 {% endif %}
                             </label>
-                            <label for="password">
+                            <label for="password" class="px-6">
                                 <input type="password" id="password" name="password"
-                                       class="form-control block w-full px-3 py-1.5 mb-6 text-base font-normal text-gray-700 bg-white drop-shadow bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                       class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white drop-shadow bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                        placeholder="Parole"/>
                                 {% if errors.password %}
-                                    <span class="text-red-500">{{ errors.password[0] }}</span>
+                                    <span class="text-red-500 text-sm">{{ errors.password[0] }}</span>
                                 {% endif %}
                             </label>
-                            <label for="confirm_password">
+                            <label for="confirm_password" class="px-6">
                                 <input type="password" id="confirm_password" name="confirm_password"
-                                       class="form-control block w-full px-3 py-1.5 mb-6 text-base font-normal text-gray-700 bg-white drop-shadow bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                       class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white drop-shadow bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                        placeholder="Parole atkārtoti"/>
                                 {% if errors.password %}
-                                    <span class="text-red-500">{{ errors.password[0] }}</span>
+                                    <span class="text-red-500 text-sm">{{ errors.password[0] }}</span>
                                 {% endif %}
                             </label>
                             <button type="submit"
-                                    class="inline-block px-6 py-2.5 mb-6 w-2/3 bg-lime-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-lime-700 hover:shadow-lg focus:bg-lime-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-lime-800 active:shadow-lg transition duration-150 ease-in-out">
+                                    class="inline-block px-6 py-2.5 mb-6 mt-6 w-2/3 bg-lime-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-lime-700 hover:shadow-lg focus:bg-lime-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-lime-800 active:shadow-lg transition duration-150 ease-in-out">
                                 Reģistrēties
                             </button>
-                            <p class="mt-4">Esi reģistrējies? <a href="/login" class="text-blue-500 hover:text-blue-700 font-semibold">Ieiet sistēmā</a></p>
+                            <p class="mt-4">Esi reģistrējies? <a href="/login"
+                                                                 class="text-blue-500 hover:text-blue-700 font-semibold">Ieiet
+                                    sistēmā</a></p>
                         </form>
                     </div>
                 </div>

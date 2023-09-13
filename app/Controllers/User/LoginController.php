@@ -16,7 +16,7 @@ class LoginController
 
     public function __construct(
         LoginPDOUserService $loginService,
-        LoginValidator $loginValidator
+        LoginValidator      $loginValidator
     )
     {
         $this->loginService = $loginService;
@@ -25,8 +25,8 @@ class LoginController
 
     public function index(): TwigView
     {
-        if(Session::get('user')){
-            return new TwigView('welcome', []);
+        if (Session::get('user')) {
+            return new TwigView('/index', []);
         }
         return new TwigView('User/login', []);
     }
@@ -52,6 +52,6 @@ class LoginController
     {
         Session::destroy();
 
-        return new Redirect('/login');
+        return new Redirect('/');
     }
 }
