@@ -10,22 +10,33 @@
 </head>
 <body>
 
-<div class="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
+<section class="relative mx-auto w-fit">
+    <nav class="flex justify-between bg-cyan-800 text-white w-screen">
+        <div class="px-5 xl:px-12 py-6 flex w-full items-center">
+            <a class="text-3xl font-bold font-heading" href="/">
+                <img src="https://vendon.net/wp-content/uploads/2021/06/Logo_Header-1.svg" width="200" height="46"
+                     class="attachment-full size-full wp-image-2389 astra-logo-svg" loading="lazy" alt="Vendon">
+            </a>
+        </div>
+    </nav>
+</section>
+
+<div class="h-screen bg-gray-200 flex flex-col justify-center">
     <div class="relative py-3 sm:max-w-xl sm:mx-auto">
         <div
-                class="absolute inset-0 bg-gradient-to-r from-green-200 to-green-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
+                class="absolute inset-0 bg-gradient-to-r from-lime-500 to-lime-700 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
         </div>
-        <div class="relative px-4 py-10 bg-green-800 shadow-lg sm:rounded-3xl sm:p-20">
+        <div class="relative px-4 py-10 bg-cyan-800 shadow-lg sm:rounded-3xl sm:p-20">
             <div class="max-w-md mx-auto">
                 <div>
-                    <h1 class="text-2xl text-gray-200 font-semibold">Log Into Your Account</h1>
+                    <h1 class="text-2xl text-gray-200 font-semibold">Ielogoties savā kontā</h1>
                 </div>
                 <form method="POST" action="/login">
                     <div class="divide-y divide-gray-200">
                         <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
                             <div class="relative">
                                 <label class="text-gray-200" for="email">
-                                    Email Address
+                                    E-pasts
                                 </label>
                                 <input id="email" name="email" type="text"
                                        class="block w-full px-4 py-2 mt-2 text-gray-800 bg-gray-200 border border-gray-600 rounded-md focus:border-blue-500 focus:outline-none focus:ring"/>
@@ -35,7 +46,7 @@
                             </div>
                             <div class="relative">
                                 <label class="text-gray-200" for="password">
-                                    Password
+                                    Parole
                                 </label>
                                 <input id="password" name="password" type="password"
                                        class="block w-full px-4 py-2 mt-2 text-gray-800 bg-gray-200 border border-gray-600 rounded-md focus:border-blue-500 focus:outline-none focus:ring"/>
@@ -44,14 +55,8 @@
                                 {% endif %}
                             </div>
                             <div class="relative">
-                                <button class="mr-2 bg-transparent hover:bg-yellow-300 text-yellow-300 hover:text-black rounded shadow hover:shadow-lg py-2 px-4 border border-yellow-300 hover:border-transparent">
-                                    Log In
-                                </button>
-
-                                <button class="bg-yellow-300 text-black rounded shadow hover:bg-yellow-200 hover:shadow-lg py-2 px-4 border border-yellow-300 hover:border-transparent">
-                                    <a href="/register">
-                                        Create account
-                                    </a>
+                                <button type="submit" class="bg-lime-600 text-black rounded shadow hover:bg-lime-500 hover:shadow-lg py-2 px-4 border border-lime-600 hover:border-transparent">
+                                        Ielogoties
                                 </button>
                             </div>
                         </div>
