@@ -4,12 +4,13 @@ namespace Vendon\Controllers\User;
 
 use Vendon\Core\Redirect;
 use Vendon\Core\Session;
+use Vendon\Core\TwigView;
 use Vendon\Exceptions\ValidationException;
 use Vendon\Services\User\Register\RegisterPDOUserRequest;
 use Vendon\Services\User\Register\RegisterPDOUserService;
 use Vendon\Validation\RegistrationFormValidator;
 
-class UserController
+class RegisterController
 {
     private RegisterPDOUserService $userService;
     private RegistrationFormValidator $formValidator;

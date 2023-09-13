@@ -2,7 +2,6 @@
 
 namespace Vendon\Controllers;
 
-use Vendon\Core\Session;
 use Vendon\Core\TwigView;
 
 class WelcomeController

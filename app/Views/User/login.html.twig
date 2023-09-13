@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Log In</title>
+</head>
+<body>
+
+<div class="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
+    <div class="relative py-3 sm:max-w-xl sm:mx-auto">
+        <div
+                class="absolute inset-0 bg-gradient-to-r from-green-200 to-green-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
+        </div>
+        <div class="relative px-4 py-10 bg-green-800 shadow-lg sm:rounded-3xl sm:p-20">
+            <div class="max-w-md mx-auto">
+                <div>
+                    <h1 class="text-2xl text-gray-200 font-semibold">Log Into Your Account</h1>
+                </div>
+                <form method="POST" action="/login">
+                    <div class="divide-y divide-gray-200">
+                        <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+                            <div class="relative">
+                                <label class="text-gray-200" for="email">
+                                    Email Address
+                                </label>
+                                <input id="email" name="email" type="text"
+                                       class="block w-full px-4 py-2 mt-2 text-gray-800 bg-gray-200 border border-gray-600 rounded-md focus:border-blue-500 focus:outline-none focus:ring"/>
+                                {% if errors.email %}
+                                    <span class="text-red-500 tex-sm">{{ errors.email[0] }}</span>
+                                {% endif %}
+                            </div>
+                            <div class="relative">
+                                <label class="text-gray-200" for="password">
+                                    Password
+                                </label>
+                                <input id="password" name="password" type="password"
+                                       class="block w-full px-4 py-2 mt-2 text-gray-800 bg-gray-200 border border-gray-600 rounded-md focus:border-blue-500 focus:outline-none focus:ring"/>
+                                {% if errors.password %}
+                                    <span class="text-red-500">{{ errors.password[0] }}</span>
+                                {% endif %}
+                            </div>
+                            <div class="relative">
+                                <button class="mr-2 bg-transparent hover:bg-yellow-300 text-yellow-300 hover:text-black rounded shadow hover:shadow-lg py-2 px-4 border border-yellow-300 hover:border-transparent">
+                                    Log In
+                                </button>
+
+                                <button class="bg-yellow-300 text-black rounded shadow hover:bg-yellow-200 hover:shadow-lg py-2 px-4 border border-yellow-300 hover:border-transparent">
+                                    <a href="/register">
+                                        Create account
+                                    </a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
