@@ -19,12 +19,14 @@ class CreatePDOQuizService
     {
         $questions = [];
 
+        var_dump($request->getQuestions());die;
         foreach ($request->getQuestions() as $questionRequest) {
             $question = new Question(
                 $questionRequest['question_text'],
                 $questionRequest['answers'],
                 $questionRequest['correct_answer']
             );
+
             $questions[] = $question;
         }
 

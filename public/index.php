@@ -11,7 +11,7 @@ use Vendon\Core\TwigView;
 require_once '../vendor/autoload.php';
 
 session_start();
-var_dump($_SESSION);
+
 $dotenv = Dotenv\Dotenv::createImmutable('../');
 $dotenv->load();
 
