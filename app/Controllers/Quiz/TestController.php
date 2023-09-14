@@ -6,8 +6,8 @@ use Vendon\Core\Redirect;
 use Vendon\Core\Session;
 use Vendon\Core\TwigView;
 use Vendon\Services\Quiz\Show\ShowPDOQuestionService;
-use Vendon\Services\Quiz\Store\StorePDOAnswerRequest;
-use Vendon\Services\Quiz\Store\StorePDOAnswerService;
+use Vendon\Services\Quiz\Create\StorePDOAnswerRequest;
+use Vendon\Services\Quiz\Create\StorePDOAnswerService;
 
 class TestController
 {
@@ -32,7 +32,7 @@ class TestController
 
         $questions = $this->questionService->handle();
 
-        return new TwigView("Quiz/quiz", [
+        return new TwigView("Question/quiz", [
             'questions' => $questions,
         ]);
     }
@@ -54,6 +54,6 @@ class TestController
             )
         );
 
-        return new Redirect('Quiz/results');
+        return new Redirect('Question/results');
     }
 }

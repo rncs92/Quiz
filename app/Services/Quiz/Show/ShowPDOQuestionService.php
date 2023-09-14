@@ -3,13 +3,13 @@
 namespace Vendon\Services\Quiz\Show;
 
 use Vendon\Exceptions\ResourceNotFoundException;
-use Vendon\Repository\Quiz\TestRepository;
+use Vendon\Repository\Quiz\QuizRepository;
 
 class ShowPDOQuestionService
 {
-    private TestRepository $testRepository;
+    private QuizRepository $testRepository;
 
-    public function __construct(TestRepository $testRepository)
+    public function __construct(QuizRepository $testRepository)
     {
 
         $this->testRepository = $testRepository;

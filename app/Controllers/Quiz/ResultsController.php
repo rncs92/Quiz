@@ -50,7 +50,7 @@ class ResultsController
             }
         }
 
-        return new TwigView('Quiz/results', [
+        return new TwigView('Question/results', [
             'userName' => $userName,
             'total' => $totalQuestions,
             'correctAnswers' => $correctAnswersCount
