@@ -49,10 +49,10 @@
 <div class="w-screen flex justify-center">
     <div class="w-1/2 flex flex-col items-center bg-gray-100 p-8 rounded-md shadow-md mt-6">
         <h2 class="text-2xl mb-4 text-3xl font-semibold">Izveido savu testu</h2>
-        <form id="quizForm" class="w-full">
-            <label for="quiz_name"></label>
-            <input id="quiz_name"
-                   name="quiz_name"
+        <form id="quizForm" class="w-full" method="POST" action="/create">
+            <label for="title"></label>
+            <input id="title"
+                   name="title"
                    class="mt-4 w-2/3 bg-gray-50 border border-gray-300 text-gray-900 rounded-lg p-2.5"
                    placeholder="Ievadiet testa nosaukumu"
                    required
@@ -78,7 +78,7 @@
             <label class="flex justify-center mt-4 text-lg font-semibold" for="question_${questionCounter}">Jautājums Nr. ${questionCounter}</label>
             <input type="text" id="question_${questionCounter}" name="questions[]" class="mt-4 w-2/3 bg-gray-50 border border-gray-300 text-gray-900 rounded-lg p-2.5" placeholder="Ievadiet jautājumu" required>
             <label for="correct_answer_${questionCounter}" class="mt-2"></label>
-            <input type="text" id="correct_answer_${questionCounter}" name="correct_answers[]" class="mt-2 w-2/3 bg-gray-50 border border-gray-300 text-gray-900 p-2 rounded-md" placeholder="Ievadiet pareizo atbildi" required>
+            <input type="text" id="correct_answer_${questionCounter}" name="correct_answer" class="mt-2 w-2/3 bg-gray-50 border border-gray-300 text-gray-900 p-2 rounded-md" placeholder="Ievadiet pareizo atbildi" required>
             <div class="mt-2">
                 <input type="text" name="answers[]" class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 p-2 rounded-md" placeholder="Ievadiet atbildes variantu" required>
                 <button type="button"
@@ -136,30 +136,6 @@
         // Remove a question when "Remove Question" button is clicked
         $("#questionContainer").on("click", ".removeQuestion", function () {
             $(this).closest("div").remove(); // Remove the entire question block
-        });
-
-        // Handle form submission using AJAX
-        $("#quizForm").submit(function (event) {
-            event.preventDefault();
-
-            // Serialize form data to send via AJAX
-            var formData = $(this).serializeArray();
-
-            // AJAX POST request to send the quiz data to the server (you'll need to handle this on the server-side)
-            $.ajax({
-                type: "POST",
-                url: "process_quiz.php", // Replace with your server-side script
-                data: formData,
-                success: function (response) {
-                    // Handle the server response here (e.g., show a success message)
-                    alert("Question created successfully!");
-                    // Optionally, you can reset the form or redirect to another page.
-                },
-                error: function (error) {
-                    // Handle any errors here
-                    console.error(error);
-                }
-            });
         });
     });
 </script>

@@ -19,11 +19,11 @@ return [
     ['GET', '/login', [LoginController::class, 'index']],
     ['POST', '/login', [LoginController::class, 'login']],
     ['POST', '/logout', [LoginController::class, 'logout']],
-
     //Question
     ['GET', '/test', [TestController::class, 'index']],
     //Create test
     ['GET', '/create', [CreateController::class, 'index']],
+    ['POST', '/create', [CreateController::class, 'store']],
     //Complete test
     ['POST', '/test', [TestController::class, 'storeTestAnswers']],
     //Results

@@ -2,7 +2,7 @@
 
 namespace Vendon\Services\Quiz\Create;
 
-use Vendon\Core\Session;
+use Vendon\Models\Question;
 use Vendon\Models\Quiz;
 use Vendon\Repository\Quiz\QuizRepository;
 
@@ -17,13 +17,24 @@ class CreatePDOQuizService
 
     public function handle(CreatePDOQuizRequest $request): CreatePDOQuizResponse
     {
+        $questions = [];
+
+        foreach ($request->getQuestions() as $questionRequest) {
+            $question = new Question(
+                $questionRequest['question_text'],
+                $questionRequest['answers'],
+                $questionRequest['correct_answer']
+            );
+            $questions[] = $question;
+        }
+
         $quiz = new Quiz(
             $request->getTitle(),
             $request->getCreatedBy(),
-            $request->getQuestions()
+            $questions
         );
 
-         $this->quizRepository->save($quiz);
+        $this->quizRepository->save($quiz);
         return new CreatePDOQuizResponse($quiz);
     }
 }

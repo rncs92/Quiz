@@ -4,28 +4,24 @@ namespace Vendon\Models;
 
 class Question
 {
-    private int $quizId;
     private string $questionText;
     private array $answers;
     private string $correctAnswer;
+    private ?int $quizId;
 
     public function __construct(
-        int    $quizId,
         string $questionText,
         array  $answers,
-        string $correctAnswer
+        string $correctAnswer,
+        int    $quizId = null
     )
     {
-        $this->quizId = $quizId;
         $this->questionText = $questionText;
         $this->answers = $answers;
         $this->correctAnswer = $correctAnswer;
+        $this->quizId = $quizId;
     }
 
-    public function getQuizId(): int
-    {
-        return $this->quizId;
-    }
 
     public function getQuestionText(): string
     {
@@ -40,5 +36,10 @@ class Question
     public function getCorrectAnswer(): string
     {
         return $this->correctAnswer;
+    }
+
+    public function getQuizId(): ?int
+    {
+        return $this->quizId;
     }
 }
