@@ -29,7 +29,8 @@ class CreateController
 
     public function store(): Redirect
     {
-        $userId = Session::get('user');
+        $user = Session::get('user');
+        $userId = $user->getUserId();
 
         $this->quizService->handle(
             new CreatePDOQuizRequest(
