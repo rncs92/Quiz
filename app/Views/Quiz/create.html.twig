@@ -50,7 +50,7 @@
     <div class="w-1/2 bg-gray-100 p-8 rounded-md shadow-md mt-6">
         <h2 class="text-2xl flex justify-center mb-4">Create Your Quiz</h2>
         <form id="quizForm">
-            <div id="questionContainer" class="flex justify-center mt-8">
+            <div id="questionContainer">
                 <!-- Questions and answer fields will be added here -->
             </div>
             <button type="button" id="addQuestion" class="bg-blue-500 text-white py-2 px-4 rounded-full">Pievienot
@@ -66,16 +66,23 @@
         // Function to add a new question
         function addQuestion() {
             var questionHtml = `<div class="mt-4">
-            <input type="text" name="questions[]" class="bg-gray-100 border border-gray-300 p-2 rounded-md" placeholder="Enter your question" required>
+            <input type="text" name="questions[]" class="bg-gray-100 border border-gray-300 p-2 rounded-md" placeholder="Ievadiet jautājumu" required>
             <div class="mt-2">
-                <input type="text" name="answers[]" class="bg-gray-100 border border-gray-300 p-2 rounded-md" placeholder="Enter an answer" required>
-                <button type="button" class="removeAnswer"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="red" class="bi bi-x" viewBox="0 0 16 16">
-  <path d="M4.293 4.293a1 1 0 0 1 1.414 0L8 6.586l2.293-2.293a1 1 0 1 1 1.414 1.414L9.414 8l2.293 2.293a1 1 0 0 1-1.414 1.414L8 9.414l-2.293 2.293a1 1 0 0 1-1.414-1.414L6.586 8 4.293 5.707a1 1 0 0 1 0-1.414z"/>
-</svg>
-</button
+                <input type="text" name="answers[]" class="bg-gray-100 border border-gray-300 p-2 rounded-md" placeholder="Ievadiet atbildes variantu" required>
+                <button type="button"
+                        class="removeAnswer text-white py-2 px-3 ml-2">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         width="20"
+                         height="20"
+                         fill="red"
+                         class="bi bi-x"
+                         viewBox="0 0 16 16">
+                    <path d="M4.293 4.293a1 1 0 0 1 1.414 0L8 6.586l2.293-2.293a1 1 0 1 1 1.414 1.414L9.414 8l2.293 2.293a1 1 0 0 1-1.414 1.414L8 9.414l-2.293 2.293a1 1 0 0 1-1.414-1.414L6.586 8 4.293 5.707a1 1 0 0 1 0-1.414z"/>
+                    </svg>
+                </button>
             </div>
-            <button type="button" class="addAnswer bg-blue-500 text-white py-2 px-4 rounded-full mt-2">Add Answer</button>
-            <button type="button" class="removeQuestion bg-red-500 text-white py-2 px-3 rounded-full ml-2">Remove Question</button>
+            <button type="button" class="addAnswer bg-blue-500 text-white py-2 px-4 rounded-full mt-2">Pievienot atbildi</button>
+            <button type="button" class="removeQuestion bg-red-500 text-white py-2 px-3 rounded-full ml-2">Dzēst jautājumu</button>
         </div>`;
 
             $("#questionContainer").append(questionHtml);
@@ -91,11 +98,18 @@
 
         // Add a new answer field when "Add Answer" button is clicked
         $("#questionContainer").on("click", ".addAnswer", function () {
-            var answerInput = `<input type="text" name="answers[]" class="bg-gray-100 border border-gray-300 p-2 rounded-md" placeholder="Ievadiet atbildi" required>`;
-            var removeButton = `<button type="button" class="removeAnswer"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="red" class="bi bi-x" viewBox="0 0 16 16">
-  <path d="M4.293 4.293a1 1 0 0 1 1.414 0L8 6.586l2.293-2.293a1 1 0 1 1 1.414 1.414L9.414 8l2.293 2.293a1 1 0 0 1-1.414 1.414L8 9.414l-2.293 2.293a1 1 0 0 1-1.414-1.414L6.586 8 4.293 5.707a1 1 0 0 1 0-1.414z"/>
-</svg>
-</button>`;
+            var answerInput = `<input type="text" name="answers[]" class="bg-gray-100 border border-gray-300 p-2 rounded-md" placeholder="Ievadiet atbiles variantu" required>`;
+            var removeButton = `<button type="button"
+                        class="removeAnswer text-white py-2 px-3 ml-2">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         width="20"
+                         height="20"
+                         fill="red"
+                         class="bi bi-x"
+                         viewBox="0 0 16 16">
+                    <path d="M4.293 4.293a1 1 0 0 1 1.414 0L8 6.586l2.293-2.293a1 1 0 1 1 1.414 1.414L9.414 8l2.293 2.293a1 1 0 0 1-1.414 1.414L8 9.414l-2.293 2.293a1 1 0 0 1-1.414-1.414L6.586 8 4.293 5.707a1 1 0 0 1 0-1.414z"/>
+                    </svg>
+                </button>`;
 
             $(this).prev().after(answerInput + removeButton);
         });
