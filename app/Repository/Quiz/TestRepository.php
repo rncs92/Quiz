@@ -2,7 +2,7 @@
 
 namespace Vendon\Repository\Quiz;
 
-use Vendon\Models\Answer;
+use Vendon\Models\UserAnswer;
 
 interface TestRepository
 {
@@ -10,5 +10,5 @@ interface TestRepository
 
     public function byQuestionId(int $questionId): array;
 
-    public function save(Answer $answer, int $userId): void;
+    public function save(UserAnswer $answer, int $userId): void;
 }

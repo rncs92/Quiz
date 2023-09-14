@@ -5,7 +5,7 @@ namespace Vendon\Repository\Quiz;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Query\QueryBuilder;
 use Vendon\Core\Database;
-use Vendon\Models\Answer;
+use Vendon\Models\UserAnswer;
 use Vendon\Models\Question;
 
 class PDOTestRepository implements TestRepository
@@ -54,7 +54,7 @@ class PDOTestRepository implements TestRepository
         return $questionCollection;
     }
 
-    public function save(Answer $answer, int $userId): void
+    public function save(UserAnswer $answer, int $userId): void
     {
         $queryBuilder = $this->queryBuilder;
         $queryBuilder

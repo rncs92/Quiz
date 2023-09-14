@@ -2,7 +2,7 @@
 
 namespace Vendon\Repository\User;
 
-use Vendon\Models\Answer;
+use Vendon\Models\UserAnswer;
 use Vendon\Models\User;
 
 interface UserRepository

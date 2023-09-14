@@ -2,18 +2,18 @@
 
 namespace Vendon\Services\Quiz\Store;
 
-use Vendon\Models\Answer;
+use Vendon\Models\UserAnswer;
 
 class StorePDOAnswerResponse
 {
-    private Answer $answer;
+    private UserAnswer $answer;
 
-    public function __construct(Answer $answer)
+    public function __construct(UserAnswer $answer)
     {
         $this->answer = $answer;
     }
 
-    public function getAnswer(): Answer
+    public function getAnswer(): UserAnswer
     {
         return $this->answer;
     }

@@ -3,7 +3,7 @@
 namespace Vendon\Services\Quiz\Store;
 
 use Throwable;
-use Vendon\Models\Answer;
+use Vendon\Models\UserAnswer;
 use Vendon\Repository\Quiz\TestRepository;
 
 class StorePDOAnswerService
@@ -18,7 +18,7 @@ class StorePDOAnswerService
     public function handle(StorePDOAnswerRequest $request): StorePDOAnswerResponse
     {
         try {
-            $answer = new Answer(
+            $answer = new UserAnswer(
                 $request->getAnswer1(),
                 $request->getAnswer2(),
                 $request->getAnswer3(),
