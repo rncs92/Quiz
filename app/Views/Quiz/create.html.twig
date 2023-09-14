@@ -46,16 +46,14 @@
     </nav>
 </section>
 
-<div class="w-screen flex justify-center items-center">
-    <div class="w-1/2 bg-gray-100 p-8 rounded-md shadow-md mt-6">
-        <h2 class="text-2xl flex justify-center mb-4">Create Your Quiz</h2>
-        <form id="quizForm">
-            <div id="questionContainer">
+<div class="w-screen flex justify-center">
+    <div class="w-1/2 flex flex-col items-center bg-gray-100 p-8 rounded-md shadow-md mt-6">
+        <h2 class="text-2xl mb-4">Create Your Quiz</h2>
+        <form id="quizForm" class="w-full">
+            <div id="questionContainer" class="w-full mt-8">
                 <!-- Questions and answer fields will be added here -->
             </div>
-            <button type="button" id="addQuestion" class="bg-blue-500 text-white py-2 px-4 rounded-full">Pievienot
-                jautājumu
-            </button>
+            <button type="button" id="addQuestion" class="bg-blue-500 text-white py-2 px-4 rounded-full mt-4">Pievienot jautājumu</button>
             <button type="submit" class="bg-green-500 text-white py-2 px-4 rounded-full mt-4">Izveidot testu</button>
         </form>
     </div>
@@ -65,8 +63,8 @@
     $(document).ready(function () {
         // Function to add a new question
         function addQuestion() {
-            var questionHtml = `<div class="mt-4">
-            <input type="text" name="questions[]" class="bg-gray-100 border border-gray-300 p-2 rounded-md" placeholder="Ievadiet jautājumu" required>
+            var questionHtml = `<div class="w-full mt-4">
+            <input type="text" name="questions[]" class="w-2/3 bg-gray-100 border border-gray-300 p-2 rounded-md" placeholder="Ievadiet jautājumu" required>
             <div class="mt-2">
                 <input type="text" name="answers[]" class="bg-gray-100 border border-gray-300 p-2 rounded-md" placeholder="Ievadiet atbildes variantu" required>
                 <button type="button"
@@ -81,8 +79,8 @@
                     </svg>
                 </button>
             </div>
-            <button type="button" class="addAnswer bg-blue-500 text-white py-2 px-4 rounded-full mt-2">Pievienot atbildi</button>
-            <button type="button" class="removeQuestion bg-red-500 text-white py-2 px-3 rounded-full ml-2">Dzēst jautājumu</button>
+            <button type="button" class="addAnswer mt-2 bg-blue-500 text-white py-2 px-4 rounded-full mt-2">Pievienot atbildi</button>
+            <button type="button" class="removeQuestion mt-2 bg-red-500 text-white py-2 px-3 rounded-full ml-2">Dzēst jautājumu</button>
         </div>`;
 
             $("#questionContainer").append(questionHtml);
@@ -98,7 +96,7 @@
 
         // Add a new answer field when "Add Answer" button is clicked
         $("#questionContainer").on("click", ".addAnswer", function () {
-            var answerInput = `<input type="text" name="answers[]" class="bg-gray-100 border border-gray-300 p-2 rounded-md" placeholder="Ievadiet atbiles variantu" required>`;
+            var answerInput = `<input type="text" name="answers[]" class="mt-2 bg-gray-100 border border-gray-300 p-2 rounded-md" placeholder="Ievadiet atbiles variantu" required>`;
             var removeButton = `<button type="button"
                         class="removeAnswer text-white py-2 px-3 ml-2">
                     <svg xmlns="http://www.w3.org/2000/svg"
