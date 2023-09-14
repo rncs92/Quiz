@@ -48,12 +48,21 @@
 
 <div class="w-screen flex justify-center">
     <div class="w-1/2 flex flex-col items-center bg-gray-100 p-8 rounded-md shadow-md mt-6">
-        <h2 class="text-2xl mb-4">Create Your Quiz</h2>
+        <h2 class="text-2xl mb-4 text-3xl font-semibold">Izveido savu testu</h2>
         <form id="quizForm" class="w-full">
+            <label for="quiz_name"></label>
+            <input id="quiz_name"
+                   name="quiz_name"
+                   class="mt-4 w-2/3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2.5"
+                   placeholder="Ievadiet testa nosaukumu"
+                   required
+            >
             <div id="questionContainer" class="w-full mt-8">
                 <!-- Questions and answer fields will be added here -->
             </div>
-            <button type="button" id="addQuestion" class="bg-blue-500 text-white py-2 px-4 rounded-full mt-4">Pievienot jautājumu</button>
+            <button type="button" id="addQuestion" class="bg-blue-500 text-white py-2 px-4 rounded-full mt-4">Pievienot
+                jautājumu
+            </button>
             <button type="submit" class="bg-green-500 text-white py-2 px-4 rounded-full mt-4">Izveidot testu</button>
         </form>
     </div>
@@ -61,12 +70,14 @@
 
 <script>
     $(document).ready(function () {
+        let questionCounter = 1;
         // Function to add a new question
         function addQuestion() {
             var questionHtml = `<div class="w-full mt-4">
-            <input type="text" name="questions[]" class="w-2/3 bg-gray-100 border border-gray-300 p-2 rounded-md" placeholder="Ievadiet jautājumu" required>
+            <label class="flex justify-center mt-4 text-lg font-semibold" for="question_${questionCounter}">Jautājums Nr. ${questionCounter}</label>
+            <input type="text" id="question_${questionCounter}" name="questions[]" class="mt-4 w-2/3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2.5" placeholder="Ievadiet jautājumu" required>
             <div class="mt-2">
-                <input type="text" name="answers[]" class="bg-gray-100 border border-gray-300 p-2 rounded-md" placeholder="Ievadiet atbildes variantu" required>
+                <input type="text" name="answers[]" class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 p-2 rounded-md" placeholder="Ievadiet atbildes variantu" required>
                 <button type="button"
                         class="removeAnswer text-white py-2 px-3 ml-2">
                     <svg xmlns="http://www.w3.org/2000/svg"
@@ -84,6 +95,7 @@
         </div>`;
 
             $("#questionContainer").append(questionHtml);
+            questionCounter++;
         }
 
         // Add the first question when the page loads
@@ -96,7 +108,7 @@
 
         // Add a new answer field when "Add Answer" button is clicked
         $("#questionContainer").on("click", ".addAnswer", function () {
-            var answerInput = `<input type="text" name="answers[]" class="mt-2 bg-gray-100 border border-gray-300 p-2 rounded-md" placeholder="Ievadiet atbiles variantu" required>`;
+            var answerInput = `<input type="text" name="answers[]" class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 p-2 rounded-md" placeholder="Ievadiet atbiles variantu" required>`;
             var removeButton = `<button type="button"
                         class="removeAnswer text-white py-2 px-3 ml-2">
                     <svg xmlns="http://www.w3.org/2000/svg"
