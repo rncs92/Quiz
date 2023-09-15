@@ -76,10 +76,10 @@
             var questionHtml = `<div class="w-full mt-4">
             <label class="flex justify-center mt-4 text-lg font-semibold" for="question_${questionCounter}">Jautājums Nr. ${questionCounter}</label>
             <input type="text" id="question_${questionCounter}" name="questions[${questionCounter}][text]" class="mt-4 w-2/3 bg-gray-50 border border-gray-300 text-gray-900 rounded-lg p-2.5" placeholder="Ievadiet jautājumu" required>
-            <label for="correct_answer_${questionCounter}" class="mt-2">Pareizā atbilde (1-4):</label>
-            <input type="number" id="correct_answer_${questionCounter}" name="questions[${questionCounter}][correct]" class="mt-2 w-2/3 bg-gray-50 border border-gray-300 text-gray-900 p-2 rounded-md" required>
+            <label for="correct_answer_${questionCounter}" class="mt-2"></label>
+            <input type="text" id="correct_answer_${questionCounter}" name="questions[${questionCounter}][correct]" class="mt-2 w-2/3 bg-gray-50 border border-gray-300 text-gray-900 p-2 rounded-md" placeholder="Ievadiet pareizo atbildi" required>
             <div class="mt-2" id="answersContainer_${questionCounter}">
-                <input type="text" name="questions[${questionCounter}][answers][]" class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 p-2 rounded-md" placeholder="Ievadiet atbildes variantu" required>
+                <input type="text" name="questions[${questionCounter}][answers][]" class="mt-2 bg-gray-50 border border-gray-300 text-gray-900 p-2 rounded-md" placeholder="Ievadiet atbildes variantu">
             </div>
             <button type="button" data-question="${questionCounter}" class="addAnswer mt-2 bg-blue-500 text-white py-2 px-4 rounded-full mt-2">Pievienot atbildi</button>
             <button type="button" class="removeQuestion mt-2 bg-red-500 text-white py-2 px-3 rounded-full ml-2">Dzēst jautājumu</button>
@@ -100,7 +100,7 @@
         // Add a new answer field when "Add UserAnswer" button is clicked
         $("#questionContainer").on("click", ".addAnswer", function () {
             var questionNumber = $(this).data("question");
-            var answerInput = `<input type="text" name="questions[${questionNumber}][answers][]" class="mt-2 mr-1 bg-gray-50 border border-gray-300 text-gray-900 p-2 rounded-md" placeholder="Ievadiet atbildes variantu" required>`;
+            var answerInput = `<input type="text" name="questions[${questionNumber}][answers][]" class="mt-2 mr-1 bg-gray-50 border border-gray-300 text-gray-900 p-2 rounded-md" placeholder="Ievadiet atbildes variantu">`;
             $(`#answersContainer_${questionNumber}`).append(answerInput);
         });
 

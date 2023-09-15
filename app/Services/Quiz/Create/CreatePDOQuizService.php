@@ -33,6 +33,7 @@ class CreatePDOQuizService
 
             $questionsData[] = $questionData;
         }
+
         $jsonQuestions = json_encode($questionsData);
 
         $quiz = new Quiz(
