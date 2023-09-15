@@ -5,7 +5,7 @@ namespace Vendon\Services\Quiz\Show;
 use Vendon\Exceptions\ResourceNotFoundException;
 use Vendon\Repository\Quiz\QuizRepository;
 
-class ShowPDOQuestionService
+class ShowPDOQuizService
 {
     private QuizRepository $testRepository;
 
@@ -18,7 +18,7 @@ class ShowPDOQuestionService
     public function handle(): array
     {
         try {
-            return $this->testRepository->allQuestions();
+            return $this->testRepository->all();
         } catch (ResourceNotFoundException $exception) {
             return [];
         }

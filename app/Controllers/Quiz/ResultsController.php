@@ -4,19 +4,19 @@ namespace Vendon\Controllers\Quiz;
 
 use Vendon\Core\TwigView;
 use Vendon\Models\Question;
-use Vendon\Services\Quiz\Show\ShowPDOQuestionService;
+use Vendon\Services\Quiz\Show\ShowPDOQuizService;
 use Vendon\Services\User\Show\ShowPDOUserAnswersService;
 use Vendon\Services\User\Show\ShowPDOUserService;
 
 class ResultsController
 {
     private ShowPDOUserService $userService;
-    private ShowPDOQuestionService $questionService;
+    private ShowPDOQuizService $questionService;
     private ShowPDOUserAnswersService $answersService;
 
     public function __construct(
         ShowPDOUserService        $userService,
-        ShowPDOQuestionService    $questionService,
+        ShowPDOQuizService        $questionService,
         ShowPDOUserAnswersService $answersService
     )
     {

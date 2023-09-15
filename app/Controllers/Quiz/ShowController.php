@@ -1,17 +1,18 @@
 <?php declare(strict_types=1);
 
-namespace Vendon\Controllers\Index;
+namespace Vendon\Controllers\Quiz;
 
+use Vendon\Core\Redirect;
 use Vendon\Core\Session;
 use Vendon\Core\TwigView;
 use Vendon\Services\Quiz\Show\ShowPDOQuizService;
 
-class IndexController
+class ShowController
 {
     private ShowPDOQuizService $quizService;
 
     public function __construct(
-        ShowPDOQuizService $quizService
+       ShowPDOQuizService $quizService
     )
     {
         $this->quizService = $quizService;
@@ -19,15 +20,11 @@ class IndexController
 
     public function index(): TwigView
     {
-        if (!Session::get('user')) {
-            return new TwigView('User/login', []);
-        }
+        $questions = $this->quizService->handle();
 
-        $quizzes = $this->quizService->handle();
-
-
-        return new TwigView('index', [
-            'quizzes' => $quizzes
+        return new TwigView("Question/quiz", [
+            'questions' => $questions,
         ]);
     }
+
 }

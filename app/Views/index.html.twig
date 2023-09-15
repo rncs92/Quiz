@@ -17,8 +17,10 @@
                      class="attachment-full size-full wp-image-2389 astra-logo-svg" loading="lazy" alt="Vendon">
             </a>
             <ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
-                <li><a class="hover:text-yellow-400 hover:bg-cyan-900 px-6 py-4 rounded-lg" href="/index">Sākums</a></li>
-                <li><a class="hover:text-yellow-400 hover:bg-cyan-900 px-6 py-4 rounded-lg" href="/create">Izveidot testu</a></li>
+                <li><a class="hover:text-yellow-400 hover:bg-cyan-900 px-6 py-4 rounded-lg" href="/index">Sākums</a>
+                </li>
+                <li><a class="hover:text-yellow-400 hover:bg-cyan-900 px-6 py-4 rounded-lg" href="/create">Izveidot
+                        testu</a></li>
                 <li><a class="hover:text-yellow-400 hover:bg-cyan-900 px-6 py-4 rounded-lg" href="#">Statistika</a></li>
                 <li><a class="hover:text-yellow-400 hover:bg-cyan-900 px-6 py-4 rounded-lg" href="#">Section 4</a></li>
             </ul>
@@ -43,20 +45,10 @@
     </nav>
 </section>
 <div class="flex justify-center items-center w-full mt-10">
-    <h1 class="font-bold text-4xl">Testa uzdevums</h1>
+    <h1 class="font-bold text-4xl">Izvēlieties testu</h1>
 </div>
 <form method="POST" action="/index">
-    <div class="flex justify-center w-screen">
-        <div class="w-1/4">
-            <label for="username" class="flex justify-center"></label>
-            <input id="username"
-                   name="username"
-                   class="mt-4 w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5"
-                   placeholder="Ievadiet savu vārdu">
-            {% if errors.username %}
-                <span class="text-red-500">{{ errors.username[0] }}</span>
-            {% endif %}
-        </div>
+    <div class="flex justify-center w-screen mt-10">
     </div>
     <div class="flex justify-center w-screen">
         <div class="w-1/4">
@@ -64,10 +56,10 @@
             <select id="test"
                     name="test"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                <option value="">Izvēlies testu</option>
-                <option value="test1">Ko Tu zini par Vendon?</option>
-                <option value="test2">Sen aizmirstie apgērbu nosaukumi</option>
-                <option value="test3">Āķīgie jautājumi</option>
+                <option disabled selected>Izvēlies testu</option>
+                {% for quiz in quizzes %}
+                    <option value="{{ quiz.id }}">{{ quiz.title }}</option>
+                {% endfor %}
             </select>
             {% if errors.test %}
                 <span class="text-red-500">{{ errors.test[0] }}</span>

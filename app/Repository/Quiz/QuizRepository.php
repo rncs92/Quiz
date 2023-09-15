@@ -8,4 +8,5 @@ interface QuizRepository
 {
     public function save(Quiz $quiz): void;
 
+    public function all(): array;
 }

@@ -6,8 +6,6 @@ use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Query\QueryBuilder;
 use Vendon\Core\Database;
 use Vendon\Models\Quiz;
-use Vendon\Models\UserAnswer;
-use Vendon\Models\Question;
 
 class PDOQuizRepository implements QuizRepository
 {
@@ -41,11 +39,27 @@ class PDOQuizRepository implements QuizRepository
         $quiz->setId((int)$this->connection->lastInsertId());
     }
 
+    public function all(): array
+    {
+        $queryBuilder = $this->queryBuilder;
+        $quizzes = $queryBuilder->select('*')
+            ->from('quizzes')
+            ->fetchAllAssociative();
+
+        $quizCollection = [];
+        foreach ($quizzes as $quiz) {
+            $quizCollection[] = $this->buildModel($quiz);
+        }
+
+        return $quizCollection;
+    }
+
+
     private function buildModel($quiz): Quiz
     {
         return new Quiz(
             $quiz['title'],
-            $quiz['created_by'],
+            (int)$quiz['created_by'],
             $quiz['questions'],
             (int)$quiz['id']
         );
