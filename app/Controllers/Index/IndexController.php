@@ -5,17 +5,17 @@ namespace Vendon\Controllers\Index;
 use Vendon\Core\Session;
 use Vendon\Core\TwigView;
 use Vendon\Models\Quiz;
-use Vendon\Services\Quiz\Show\ShowPDOQuizService;
+use Vendon\Services\Quiz\Index\IndexPDOQuizService;
 use Vendon\Services\User\Show\ShowPDOUserService;
 
 class IndexController
 {
-    private ShowPDOQuizService $quizService;
+    private IndexPDOQuizService $quizService;
     private ShowPDOUserService $userService;
 
     public function __construct(
-        ShowPDOQuizService $quizService,
-        ShowPDOUserService $userService
+        IndexPDOQuizService $quizService,
+        ShowPDOUserService  $userService
     )
     {
         $this->quizService = $quizService;
@@ -40,5 +40,12 @@ class IndexController
             'quizzes' => $quizzes,
             'users' => $users
         ]);
+    }
+
+    public function chooseQuiz()
+    {
+        //each quiz, has ID
+        //redirect to quiz by ID, one view for all
+
     }
 }

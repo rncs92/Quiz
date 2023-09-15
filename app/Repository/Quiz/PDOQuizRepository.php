@@ -54,6 +54,18 @@ class PDOQuizRepository implements QuizRepository
         return $quizCollection;
     }
 
+    public function byId(int $quizId): Quiz
+    {
+        $queryBuilder = $this->queryBuilder;
+        $quiz = $queryBuilder
+            ->select('*')
+            ->from('quizzes')
+            ->where('quiz_id = ?')
+            ->setParameter(0, $quizId)
+            ->fetchAssociative();
+
+        return $this->buildModel($quiz);
+    }
 
     private function buildModel($quiz): Quiz
     {

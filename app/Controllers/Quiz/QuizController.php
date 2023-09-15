@@ -12,11 +12,10 @@ class QuizController
 
     public function index(): TwigView
     {
-        return new TwigView('Quiz/quiz', []);
-    }
+        // Get quiz by id
+        //get out questions of quiz model
 
-    public function chooseQuiz(): TwigView
-    {
+
         return new TwigView('Quiz/quiz', []);
     }
 }

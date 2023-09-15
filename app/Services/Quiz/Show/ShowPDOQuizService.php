@@ -2,24 +2,21 @@
 
 namespace Vendon\Services\Quiz\Show;
 
-use Vendon\Exceptions\ResourceNotFoundException;
 use Vendon\Repository\Quiz\QuizRepository;
 
 class ShowPDOQuizService
 {
-    private QuizRepository $testRepository;
+    private QuizRepository $quizRepository;
 
-    public function __construct(QuizRepository $testRepository)
+    public function __construct(QuizRepository $quizRepository)
     {
-        $this->testRepository = $testRepository;
+        $this->quizRepository = $quizRepository;
     }
 
-    public function handle(): array
+    public function handle(ShowPDOQuizRequest $request): ShowPDOQuizResponse
     {
-        try {
-            return $this->testRepository->all();
-        } catch (ResourceNotFoundException $exception) {
-            return [];
-        }
+        $quiz = $this->quizRepository->byId($request->getQuizId());
+        //var_dump($request->getQuizId());die;
+        return new ShowPDOQuizResponse($quiz);
     }
 }
