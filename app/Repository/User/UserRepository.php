@@ -10,7 +10,8 @@ interface UserRepository
 
     public function login(string $email, string $password): ?User;
 
+    public function byEmail(string $email): ?User;
+
     public function getById(int $userId): User;
 
-    public function getUserAnswers(int $userId): array;
 }

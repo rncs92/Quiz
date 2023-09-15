@@ -61,7 +61,7 @@ class PDOQuizRepository implements QuizRepository
             $quiz['title'],
             (int)$quiz['created_by'],
             $quiz['questions'],
-            (int)$quiz['id']
+            (int)$quiz['quiz_id']
         );
     }
 }

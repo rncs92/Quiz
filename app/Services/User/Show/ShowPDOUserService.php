@@ -14,8 +14,8 @@ class ShowPDOUserService
         $this->userRepository = $userRepository;
     }
 
-    public function handle(): User
+    public function handle(int $userId): User
     {
-        return $this->userRepository->getById($_SESSION['user_id']);
+        return $this->userRepository->getById($userId);
     }
 }

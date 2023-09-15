@@ -47,30 +47,55 @@
 <div class="flex justify-center items-center w-full mt-10">
     <h1 class="font-bold text-4xl">Izvēlieties testu</h1>
 </div>
-<form method="POST" action="/index">
-    <div class="flex justify-center w-screen mt-10">
-    </div>
-    <div class="flex justify-center w-screen">
-        <div class="w-1/4">
-            <label for="test" class="flex justify-center block mb-2 text-sm font-medium text-gray-900"></label>
-            <select id="test"
-                    name="test"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                <option disabled selected>Izvēlies testu</option>
-                {% for quiz in quizzes %}
-                    <option value="{{ quiz.id }}">{{ quiz.title }}</option>
+<form method="POST" action="/index" class="flex justify-center mt-6">
+    <div
+            class="align-middle inline-block w-3/5 shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
+        <table class="min-w-full">
+            <thead>
+            <tr>
+                <th class="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">
+                    Testa ID
+                </th>
+                <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">
+                    Testa nosaukums
+                </th>
+                <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">
+                    Testa autors
+                </th>
+                <th class="px-6 py-3 border-b-2 border-gray-300"></th>
+            </tr>
+            </thead>
+            {% for index, quiz in quizzes %}
+            <tbody class="bg-white">
+            <tr>
+                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
+                    <div class="flex items-center">
+                        <div>
+                            <div class="text-lg font-semibold leading-5 text-gray-800">{{ quiz.id }}</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-500">
+                    <div class="text-lg leading-5 text-blue-900">{{ quiz.title }}</div>
+                </td>
+                <td class="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-lg leading-5">
+                    {{ users[index].name }} {{ users[index].surname }}
+                </td>
+                <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-500 text-sm leading-5">
+                    <button class="px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none">
+                        Pildīt testu
+                    </button>
+                </td>
                 {% endfor %}
-            </select>
-            {% if errors.test %}
-                <span class="text-red-500">{{ errors.test[0] }}</span>
-            {% endif %}
-        </div>
-    </div>
-    <div class="flex justify-center w-screen">
-        <button type="submit"
-                class="flex items-center mt-2 rounded-md bg-white py-2 pl-3 pr-4 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-            Sākt testu!
-        </button>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="4" class="p-4">
+                </td>
+            </tr>
+            </tfoot>
+        </table>
     </div>
 </form>
 </body>
