@@ -11,7 +11,6 @@ class ShowPDOQuizService
 
     public function __construct(QuizRepository $testRepository)
     {
-
         $this->testRepository = $testRepository;
     }
 
