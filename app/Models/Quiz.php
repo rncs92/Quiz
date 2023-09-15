@@ -6,13 +6,13 @@ class Quiz
 {
     private string $title;
     private int $createdBy;
-    private array $questions;
+    private string $questions;
     private ?int $id;
 
     public function __construct(
         string $title,
         int    $createdBy,
-        array  $questions,
+        string  $questions,
         int    $id = null
     )
     {
@@ -32,7 +32,7 @@ class Quiz
         return $this->createdBy;
     }
 
-    public function getQuestions(): array
+    public function getQuestions(): string
     {
         return $this->questions;
     }

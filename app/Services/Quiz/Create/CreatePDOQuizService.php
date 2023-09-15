@@ -17,20 +17,28 @@ class CreatePDOQuizService
 
     public function handle(CreatePDOQuizRequest $request): CreatePDOQuizResponse
     {
-        $questions = [];
+        $questionsData = [];
         foreach ($request->getQuestions() as $questionRequest) {
             $question = new Question(
                 $questionRequest['text'],
                 $questionRequest['answers'],
                 $questionRequest['correct']
             );
-            $questions[] = $question;
+
+            $questionData = [
+                'text' => $question->getQuestionText(),
+                'answers' => $question->getAnswers(),
+                'correct' => $question->getCorrectAnswer(),
+            ];
+
+            $questionsData[] = $questionData;
         }
+        $jsonQuestions = json_encode($questionsData);
 
         $quiz = new Quiz(
             $request->getTitle(),
             $request->getCreatedBy(),
-            $questions
+            $jsonQuestions
         );
 
         $this->quizRepository->save($quiz);
