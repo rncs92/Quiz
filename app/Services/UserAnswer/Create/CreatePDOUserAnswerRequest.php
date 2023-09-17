@@ -6,12 +6,12 @@ class CreatePDOUserAnswerRequest
 {
     private int $userId;
     private int $quizId;
-    private string $answers;
+    private array $answers;
 
     public function __construct(
         int   $userId,
         int   $quizId,
-        string $answers
+        array $answers
     )
     {
         $this->userId = $userId;
@@ -29,7 +29,7 @@ class CreatePDOUserAnswerRequest
         return $this->quizId;
     }
 
-    public function getAnswers(): string
+    public function getAnswers(): array
     {
         return $this->answers;
     }

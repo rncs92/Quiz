@@ -2,6 +2,7 @@
 
 namespace Vendon\Services\UserAnswer\Create;
 
+use Vendon\Models\Answer;
 use Vendon\Models\UserAnswer;
 use Vendon\Repository\User\UserRepository;
 
@@ -16,10 +17,25 @@ class CreatePDOUserAnswerService
 
     public function handle(CreatePDOUserAnswerRequest $request): CreatePDOUserAnswerResponse
     {
+        $answersData = [];
+        foreach($request->getAnswers() as $answerRequest) {
+            $answer = new Answer(
+                $answerRequest['answer']
+            );
+
+            $answerData = [
+                'answer' => $answer->getAnswer()
+            ];
+
+            $answersData[] = $answerData;
+        }
+
+        $jsonAnswers = json_encode($answersData);
+
         $userAnswer = new UserAnswer(
             $request->getUserId(),
             $request->getQuizId(),
-            $request->getAnswers()
+            $jsonAnswers
         );
 
         $this->userRepository->saveAnswer($userAnswer);
