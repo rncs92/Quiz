@@ -15,6 +15,7 @@ class ResultsController
 
     public function index(): TwigView
     {
+        var_dump($_POST);die;
         return new TwigView('Quiz/results', []);
     }
 }

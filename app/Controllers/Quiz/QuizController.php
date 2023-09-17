@@ -2,6 +2,7 @@
 
 namespace Vendon\Controllers\Quiz;
 
+use Vendon\Core\Redirect;
 use Vendon\Core\TwigView;
 use Vendon\Models\Question;
 use Vendon\Services\Quiz\Show\ShowPDOQuizService;
@@ -34,8 +35,10 @@ class QuizController
         ]);
     }
 
-    public function store()
+    public function store(): Redirect
     {
+        var_dump($_POST);die;
 
+        return new Redirect('/results');
     }
 }
