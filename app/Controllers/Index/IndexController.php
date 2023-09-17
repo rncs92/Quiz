@@ -2,6 +2,7 @@
 
 namespace Vendon\Controllers\Index;
 
+use Vendon\Core\Redirect;
 use Vendon\Core\Session;
 use Vendon\Core\TwigView;
 use Vendon\Models\Quiz;
@@ -42,9 +43,13 @@ class IndexController
         ]);
     }
 
-    public function chooseQuiz()
+    public function chooseQuiz(): Redirect
     {
-        var_dump($_POST['quiz_id']);die;
+        $quizId = $_POST['quiz_id'];
+        if (isset($quizId)) {
+            Session::put('quiz_id', $quizId);
+        }
 
+        return new Redirect("/quiz/{$quizId}");
     }
 }

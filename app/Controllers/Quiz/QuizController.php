@@ -3,19 +3,34 @@
 namespace Vendon\Controllers\Quiz;
 
 use Vendon\Core\TwigView;
+use Vendon\Models\Question;
+use Vendon\Services\Quiz\Show\ShowPDOQuizService;
 
 class QuizController
 {
-    public function __construct()
+    private ShowPDOQuizService $quizService;
+
+    public function __construct(
+        ShowPDOQuizService $quizService
+    )
     {
+        $this->quizService = $quizService;
     }
 
     public function index(): TwigView
     {
-        // Get quiz by id
-        //get out questions of quiz model
+        $quizId = (int)$_SESSION['quiz_id'];
+        $quiz = $this->quizService->handle($quizId);
+        $questionsJSON = json_decode($quiz->getQuestions(), true);
 
+        $questions = [];
+        foreach ($questionsJSON as $question) {
+            $questions[] = Question::createFromArray($question);
+        }
 
-        return new TwigView('Quiz/quiz', []);
+        return new TwigView('Quiz/quiz', [
+            'quiz' => $quiz,
+            'questions' => $questions
+        ]);
     }
 }

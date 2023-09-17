@@ -42,4 +42,13 @@ class Question
     {
         return $this->quizId;
     }
+
+    public static function createFromArray(array $data): self
+    {
+        return new self(
+            $data['text'],
+            $data['answers'],
+            $data['correct']
+        );
+    }
 }

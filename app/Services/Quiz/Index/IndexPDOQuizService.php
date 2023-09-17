@@ -2,7 +2,6 @@
 
 namespace Vendon\Services\Quiz\Index;
 
-use Vendon\Exceptions\ResourceNotFoundException;
 use Vendon\Repository\Quiz\QuizRepository;
 
 class IndexPDOQuizService
@@ -16,10 +15,6 @@ class IndexPDOQuizService
 
     public function handle(): array
     {
-        try {
-            return $this->testRepository->all();
-        } catch (ResourceNotFoundException $exception) {
-            return [];
-        }
+        return $this->testRepository->all();
     }
 }

@@ -21,27 +21,29 @@
     </nav>
 </section>
 <div class="flex justify-center items-center w-full mt-10">
-    <h1 class="font-semibold text-3xl p-4 mb-8">Izvēlieties pareizo atbildi</h1>
+    <h1 class="font-semibold text-3xl p-4 mb-8">{{ quiz.title }}</h1>
 </div>
 <div id="quiz-container" class="flex justify-center h-screen">
-    <form class="w-1/2" id="quiz-form" action="/test" method="POST">
+    <form class="w-1/2" id="quiz-form" action="/quiz" method="POST">
         {% for question in questions %}
             <div class="question" id="{{ question.questionid }}" style="display: none;">
                 <div class="border-2 rounded-xl p-8 border-gray-300 bg-gray-100">
-                    <p class="text-2xl text-center">{{ question.question }}</p>
+                    <p class="text-2xl text-center">{{ question.questionText }}</p>
                 </div>
                 <!-- Display answer options for the current question only -->
                 <div class="p-4">
                     <ul>
+                        {% for answer in question.answers %}
                         <li class="flex justify-center">
                             <label class="flex justify-center w-1/2 mb-3 border-l-8 bg-blue-50 border-black drop-shadow-lg transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-emerald-600 active:bg-emerald-800 cursor-pointer">
                                 <input type="radio" name="question{{ loop.index }}_answer"
-                                       value="{{ question.answer1 }}" class="hidden">
+                                       value="{{ answer }}" class="hidden">
                                 <span class="py-2 px-4">
-                                    {{ question.answer1 }}
+                                    {{ answer }}
                                 </span>
                             </label>
                         </li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>

@@ -2,6 +2,7 @@
 
 namespace Vendon\Services\Quiz\Show;
 
+use Vendon\Models\Quiz;
 use Vendon\Repository\Quiz\QuizRepository;
 
 class ShowPDOQuizService
@@ -13,10 +14,8 @@ class ShowPDOQuizService
         $this->quizRepository = $quizRepository;
     }
 
-    public function handle(ShowPDOQuizRequest $request): ShowPDOQuizResponse
+    public function handle(int $quizId): Quiz
     {
-        $quiz = $this->quizRepository->byId($request->getQuizId());
-        //var_dump($request->getQuizId());die;
-        return new ShowPDOQuizResponse($quiz);
+        return $this->quizRepository->byId($quizId);
     }
 }
