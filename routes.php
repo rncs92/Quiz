@@ -24,8 +24,8 @@ return [
     ['GET', '/create', [CreateController::class, 'index']],
     ['POST', '/create', [CreateController::class, 'store']],
     //Quiz
-    ['GET', '/quiz/{id}', [QuizController::class, 'index']],
-    ['POST', '/quiz/{id}', [QuizController::class, 'store']],
+    ['GET', '/quiz', [QuizController::class, 'index']],
+    ['POST', '/quiz', [QuizController::class, 'store']],
     //Results
     ['GET', '/results', [ResultsController::class, 'index']],
 ];

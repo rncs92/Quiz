@@ -2,11 +2,12 @@
 
 namespace Vendon\Controllers\Quiz;
 
+use Vendon\Core\Session;
 use Vendon\Core\TwigView;
-
 
 class ResultsController
 {
+
     public function __construct(
 
     )
@@ -15,7 +16,10 @@ class ResultsController
 
     public function index(): TwigView
     {
-        var_dump($_POST);die;
-        return new TwigView('Quiz/results', []);
+        $user = Session::get('user');
+        $userName = substr($user->getName(), 0, -1);
+        return new TwigView('Quiz/results', [
+            'user' => $userName
+        ]);
     }
 }

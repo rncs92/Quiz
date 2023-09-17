@@ -24,7 +24,7 @@
     <h1 class="font-semibold text-3xl p-4 mb-8">{{ quiz.title }}</h1>
 </div>
 <div id="quiz-container" class="flex justify-center h-screen">
-    <form class="w-1/2" id="quiz-form" action="/quiz/{id}" method="POST">
+    <form class="w-1/2" id="quiz-form" action="/quiz" method="POST">
         {% for question in questions %}
             <div class="question" id="question{{ loop.index }}" style="display: none;">
                 <div class="border-2 rounded-xl p-8 border-gray-300 bg-gray-100">
@@ -36,8 +36,8 @@
                         {% for answer in question.answers %}
                             <li class="flex justify-center">
                                 <label class="flex justify-center w-1/2 mb-3 border-l-8 bg-blue-50 border-black drop-shadow-lg transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-emerald-600 active:bg-emerald-800 cursor-pointer">
-                                    <input type="radio" name="question{{ loop.index0 }}_answer" value="{{ answer }}"
-                                           class="hidden"> value="{{ answer }}" class="hidden">
+                                    <input type="radio" name="question{{ loop.parent.loop.index }}_answer" value="{{ answer }}"
+                                           class="hidden">
                                     <span class="py-2 px-4">
                                     {{ answer }}
                                 </span>
@@ -54,12 +54,11 @@
         <input type="submit" value="Submit" class="hidden">
     </form>
 </div>
-
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const questions = document.querySelectorAll('.question');
         const progressBar = document.getElementById('progress-bar');
-        let currentQuestionIndex = 0;
+        let currentQuestionIndex = 0; // Initialize the current question index
 
         function showNextQuestion() {
             if (currentQuestionIndex < questions.length - 1) {
@@ -68,20 +67,20 @@
                 questions[currentQuestionIndex].style.display = 'block';
                 updateProgressBar();
             } else {
-                document.getElementById('quiz-form').submit(); // Formas postošana
+                document.getElementById('quiz-form').submit(); // Form submission
             }
         }
 
-        // Sākuma state, lai rādītu pirmo jautājumu
+        // Initial state to show the first question
         questions[currentQuestionIndex].style.display = 'block';
 
-        // Event listeners, lai pārslēgtos uz nākošo jautājumu, pēc atbildēta jautājuma
+        // Event listeners to switch to the next question after answering
         const answerOptions = document.querySelectorAll('input[type="radio"]');
         answerOptions.forEach(option => {
             option.addEventListener('change', showNextQuestion);
         });
 
-        // Funkcija, lai updatoitu progress bar
+        // Function to update the progress bar
         function updateProgressBar() {
             const percentComplete = ((currentQuestionIndex + 1) / questions.length) * 100;
             progressBar.style.width = percentComplete + '%';

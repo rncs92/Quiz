@@ -50,6 +50,6 @@ class IndexController
             Session::put('quiz_id', $quizId);
         }
 
-        return new Redirect("/quiz/{$quizId}");
+        return new Redirect('quiz');
     }
 }

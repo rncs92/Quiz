@@ -17,20 +17,7 @@ class CreatePDOUserAnswerService
 
     public function handle(CreatePDOUserAnswerRequest $request): CreatePDOUserAnswerResponse
     {
-        $answersData = [];
-        foreach($request->getAnswers() as $answerRequest) {
-            $answer = new Answer(
-                $answerRequest['answer']
-            );
-
-            $answerData = [
-                'answer' => $answer->getAnswer()
-            ];
-
-            $answersData[] = $answerData;
-        }
-
-        $jsonAnswers = json_encode($answersData);
+        $jsonAnswers = json_encode($request->getAnswers());
 
         $userAnswer = new UserAnswer(
             $request->getUserId(),
