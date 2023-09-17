@@ -33,4 +33,9 @@ class QuizController
             'questions' => $questions
         ]);
     }
+
+    public function store()
+    {
+
+    }
 }

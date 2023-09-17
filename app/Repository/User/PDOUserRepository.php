@@ -6,6 +6,7 @@ use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Query\QueryBuilder;
 use Vendon\Core\Database;
 use Vendon\Models\User;
+use Vendon\Models\UserAnswer;
 
 class PDOUserRepository implements UserRepository
 {
@@ -82,6 +83,24 @@ class PDOUserRepository implements UserRepository
         return $this->buildModel($user);
     }
 
+    public function saveAnswer(UserAnswer $userAnswer): void
+    {
+        $queryBuilder = $this->queryBuilder;
+        $queryBuilder
+            ->insert('userAnswers')
+            ->values(
+                [
+                    'user_id' => '?',
+                    'quiz_id' => '?',
+                    'answers' => '?',
+                ]
+            )
+            ->setParameter(0, $userAnswer->getUserId())
+            ->setParameter(1, $userAnswer->getQuizId())
+            ->setParameter(2, $userAnswer->getAnswers());
+
+        $queryBuilder->executeQuery();
+    }
 
     private function buildModel($user): User
     {

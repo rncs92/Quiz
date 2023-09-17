@@ -3,6 +3,7 @@
 namespace Vendon\Repository\User;
 
 use Vendon\Models\User;
+use Vendon\Models\UserAnswer;
 
 interface UserRepository
 {
@@ -14,4 +15,5 @@ interface UserRepository
 
     public function getById(int $userId): User;
 
+    public function saveAnswer(UserAnswer $userAnswer): void;
 }
