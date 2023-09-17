@@ -50,6 +50,7 @@
 <form method="POST" action="/index" class="flex justify-center mt-6">
     <div
             class="align-middle inline-block w-3/5 shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
+        <input type="hidden" id="selected_quiz_id" name="quiz_id" value="">
         <table class="min-w-full">
             <thead>
             <tr>
@@ -82,7 +83,8 @@
                     {{ users[index].name }} {{ users[index].surname }}
                 </td>
                 <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-500 text-sm leading-5">
-                    <button class="px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none">
+                    <button class="px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none"
+                            onclick="setSelectedQuizId('{{ quiz.id }}')">
                         Pildīt testu
                     </button>
                 </td>
@@ -98,5 +100,12 @@
         </table>
     </div>
 </form>
+
+<script>
+    function setSelectedQuizId(quizId) {
+        document.getElementById('selected_quiz_id').value = quizId;
+    }
+</script>
+
 </body>
 </html>

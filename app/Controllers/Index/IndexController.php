@@ -44,8 +44,7 @@ class IndexController
 
     public function chooseQuiz()
     {
-        //each quiz, has ID
-        //redirect to quiz by ID, one view for all
+        var_dump($_POST['quiz_id']);die;
 
     }
 }
