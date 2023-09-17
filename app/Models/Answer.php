@@ -17,4 +17,11 @@ class Answer
     {
         return $this->answer;
     }
+
+    public static function createFromArray(array $data): self
+    {
+        return new self(
+            $data['answer'],
+        );
+    }
 }
