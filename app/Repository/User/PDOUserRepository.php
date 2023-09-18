@@ -51,7 +51,7 @@ class PDOUserRepository implements UserRepository
             ->setParameter(0, $email)
             ->fetchAssociative();
 
-        return $this->buildModel($user);
+        return $this->buildUserModel($user);
     }
 
     public function byEmail(string $email): ?User
@@ -67,7 +67,7 @@ class PDOUserRepository implements UserRepository
             return null;
         }
 
-        return $this->buildModel($user);
+        return $this->buildUserModel($user);
     }
 
     public function getById(int $userId): User
@@ -80,7 +80,7 @@ class PDOUserRepository implements UserRepository
             ->setParameter(0, $userId)
             ->fetchAssociative();
 
-        return $this->buildModel($user);
+        return $this->buildUserModel($user);
     }
 
     public function saveAnswer(UserAnswer $userAnswer): void
@@ -102,7 +102,22 @@ class PDOUserRepository implements UserRepository
         $queryBuilder->executeQuery();
     }
 
-    private function buildModel($user): User
+    public function getAnswer(int $userId, int $quizId): UserAnswer
+    {
+        $queryBuilder = $this->queryBuilder;
+        $userAnswer = $queryBuilder
+            ->select('*')
+            ->from('users')
+            ->where('user_id = ?')
+            ->where('quiz_id = ?')
+            ->setParameter(0, $userId)
+            ->setParameter(0, $quizId)
+            ->fetchAssociative();
+
+        return $this->buildUserAnswerModel($userAnswer);
+    }
+
+    private function buildUserModel($user): User
     {
         return new User(
             $user['name'],
@@ -110,6 +125,16 @@ class PDOUserRepository implements UserRepository
             $user['email'],
             $user['password'],
             (int)$user['user_id']
+        );
+    }
+
+    private function buildUserAnswerModel($userAnswer): UserAnswer
+    {
+        return new UserAnswer(
+            $userAnswer['user_id'],
+            $userAnswer['quiz_id'],
+            $userAnswer['answers'],
+            (int)$userAnswer['id']
         );
     }
 }

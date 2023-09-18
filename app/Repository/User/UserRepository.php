@@ -16,4 +16,7 @@ interface UserRepository
     public function getById(int $userId): User;
 
     public function saveAnswer(UserAnswer $userAnswer): void;
+
+    public function getAnswer(int $userId, int $quizId): UserAnswer;
+
 }

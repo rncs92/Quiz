@@ -34,7 +34,7 @@ class QuizController
         foreach ($questionsJSON as $question) {
             $questions[] = Question::createFromArray($question);
         }
-        //var_dump($questions);die;
+
         return new TwigView('Quiz/quiz', [
             'quiz' => $quiz,
             'questions' => $questions
