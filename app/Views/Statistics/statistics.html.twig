@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Vendon | Sākums</title>
+</head>
+<body class="bg-gray-200 w-screen h-screen">
+<section class="relative mx-auto w-fit">
+    <nav class="flex justify-between bg-cyan-800 text-white w-screen">
+        <div class="px-5 xl:px-12 py-6 flex w-full items-center">
+            <a class="text-3xl font-bold font-heading" href="/index">
+                <img src="https://vendon.net/wp-content/uploads/2021/06/Logo_Header-1.svg" width="200" height="46"
+                     class="attachment-full size-full wp-image-2389 astra-logo-svg" loading="lazy" alt="Vendon">
+            </a>
+            <ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
+                <li><a class="hover:text-yellow-400 hover:bg-cyan-900 px-6 py-4 rounded-lg" href="/index">Sākums</a>
+                </li>
+                <li><a class="hover:text-yellow-400 hover:bg-cyan-900 px-6 py-4 rounded-lg" href="/create">Izveidot
+                        testu</a></li>
+                <li><a class="hover:text-yellow-400 hover:bg-cyan-900 px-6 py-4 rounded-lg" href="/statistics">Statistika</a></li>
+            </ul>
+        </div>
+        <div class="hidden xl:flex items-center space-x-5 items-center">
+            <form method="POST" action="/logout"
+                  class="flex flex-row items-center h-12 px-4 mr-4 rounded-lg bg-red-900 text-white hover:bg-red-800">
+                            <span class="flex items-center justify-center text-lg text-white">
+                                <svg fill="none"
+                                     stroke-linecap="round"
+                                     stroke-linejoin="round"
+                                     stroke-width="2"
+                                     viewBox="0 0 24 24"
+                                     stroke="currentColor"
+                                     class="h-6 w-6">
+                                    <path d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"></path>
+                                </svg>
+                            </span>
+                <button type="submit" class="ml-3">Iziet</button>
+            </form>
+        </div>
+    </nav>
+</section>

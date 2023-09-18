@@ -5,6 +5,7 @@ use Vendon\Controllers\Index\WelcomeController;
 use Vendon\Controllers\Quiz\CreateController;
 use Vendon\Controllers\Quiz\QuizController;
 use Vendon\Controllers\Quiz\ResultsController;
+use Vendon\Controllers\Statistics\StatisticsController;
 use Vendon\Controllers\User\LoginController;
 use Vendon\Controllers\User\RegisterController;
 
@@ -28,4 +29,6 @@ return [
     ['POST', '/quiz', [QuizController::class, 'store']],
     //Results
     ['GET', '/results', [ResultsController::class, 'index']],
+    //Statistics
+    ['GET', '/statistics', [StatisticsController::class, 'index']],
 ];
