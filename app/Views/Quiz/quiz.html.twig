@@ -36,7 +36,8 @@
                         {% for answer in question.answers %}
                             <li class="flex justify-center">
                                 <label class="flex justify-center w-1/2 mb-3 border-l-8 bg-blue-50 border-black drop-shadow-lg transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-emerald-600 active:bg-emerald-800 cursor-pointer">
-                                    <input type="radio" name="question{{ loop.parent.loop.index }}_answer" value="{{ answer }}"
+                                    <input type="radio" name="question{{ loop.parent.loop.index }}_answer"
+                                           value="{{ answer }}"
                                            class="hidden">
                                     <span class="py-2 px-4">
                                     {{ answer }}

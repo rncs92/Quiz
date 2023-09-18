@@ -21,8 +21,8 @@
                 </li>
                 <li><a class="hover:text-yellow-400 hover:bg-cyan-900 px-6 py-4 rounded-lg" href="/create">Izveidot
                         testu</a></li>
-                <li><a class="hover:text-yellow-400 hover:bg-cyan-900 px-6 py-4 rounded-lg" href="#">Statistika</a></li>
-                <li><a class="hover:text-yellow-400 hover:bg-cyan-900 px-6 py-4 rounded-lg" href="#">Section 4</a></li>
+                <li><a class="hover:text-yellow-400 hover:bg-cyan-900 px-6 py-4 rounded-lg" href="/statistics">Statistika</a>
+                </li>
             </ul>
         </div>
         <div class="hidden xl:flex items-center space-x-5 items-center">
@@ -67,15 +67,13 @@
         </div>
         <div class="flex justify-center">
             <p class="text-lg font-semibold mb-2">Pareizā atbilde:</p>
-            <p class="text-lg ml-2" id="correctAnswer">{{ correctAnswers['question' ~ (i + 1) ~ '_answer'] }}</p>
+            <p class="text-lg ml-2">{{ correctAnswers['question' ~ (i + 1) ~ '_answer'] }}</p>
         </div>
         <div class="flex justify-center">
             <p class="text-lg font-semibold mb-2">Jūsu atbilde:</p>
-            <p class="text-lg ml-2" id="userAnswer">{{ userAnswers['question' ~ (i + 1) ~ '_answer'] }}</p>
+            <p class="text-lg ml-2">{{ userAnswers['question' ~ (i + 1) ~ '_answer'] }}</p>
         </div>
-
     {% endfor %}
-
 </div>
 <a href="/index">
     <div class="flex justify-center w-screen mt-4 mb-20">
