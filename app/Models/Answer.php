@@ -18,10 +18,14 @@ class Answer
         return $this->answer;
     }
 
-    public static function createFromArray(array $data): self
+    public static function createQuestionAnswersArray(array $indexedAnswers): array
     {
-        return new self(
-            $data['answer'],
-        );
+        $questionAnswers = [];
+
+        foreach ($indexedAnswers as $index => $answer) {
+            $questionAnswers["question" . ($index + 1) . "_answer"] = $answer;
+        }
+
+        return $questionAnswers;
     }
 }

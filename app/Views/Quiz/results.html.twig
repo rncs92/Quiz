@@ -48,11 +48,37 @@
     <h1 class="font-bold text-4xl">Paldies, {{ user }}!</h1>
 </div>
 <div class="flex justify-center items-center w-full mt-10">
-    <h2 class="font-normal text-2xl">Tu atbildēji pareizi uz <b>{{ correctAnswers }}</b> jautājumiem no
-        <b>{{ total }}</b></h2>
+    <h2 class="font-normal text-2xl">Tu atbildēji pareizi uz <b>{{ correctAnswerCount }}</b> jautājumiem no
+        <b>{{ totalQuestions }}</b></h2>
+</div>
+<div class="mt-8">
+    <h3 class=" flex justify-center mb-4 font-semibold text-2xl">Testa kopsavilkums</h3>
+    {% for i in 0..questions|length - 1 %}
+        <div class="flex justify-center">
+            {% if correctAnswers['question' ~ (i + 1) ~ '_answer'] is same as userAnswers['question' ~ (i + 1) ~ '_answer'] %}
+                <div class="border-2 rounded-xl p-8 border-gray-300 bg-green-100 mb-4">
+                    <p class="text-2xl text-center">{{ questions[i].questionText }}</p>
+                </div>
+            {% else %}
+                <div class="border-2 rounded-xl p-8 border-gray-300 bg-red-100 mb-4">
+                    <p class="text-2xl text-center">{{ questions[i].questionText }}</p>
+                </div>
+            {% endif %}
+        </div>
+        <div class="flex justify-center">
+            <p class="text-lg font-semibold mb-2">Pareizā atbilde:</p>
+            <p class="text-lg ml-2" id="correctAnswer">{{ correctAnswers['question' ~ (i + 1) ~ '_answer'] }}</p>
+        </div>
+        <div class="flex justify-center">
+            <p class="text-lg font-semibold mb-2">Jūsu atbilde:</p>
+            <p class="text-lg ml-2" id="userAnswer">{{ userAnswers['question' ~ (i + 1) ~ '_answer'] }}</p>
+        </div>
+
+    {% endfor %}
+
 </div>
 <a href="/index">
-    <div class="flex justify-center w-screen mt-4">
+    <div class="flex justify-center w-screen mt-4 mb-20">
         <button type="submit"
                 class="flex items-center mt-2 rounded-md bg-white py-2 pl-3 pr-4 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
             Atpakaļ

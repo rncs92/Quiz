@@ -4,6 +4,7 @@ namespace Vendon\Controllers\Quiz;
 
 use Vendon\Core\Session;
 use Vendon\Core\TwigView;
+use Vendon\Models\Answer;
 use Vendon\Models\Question;
 use Vendon\Services\Quiz\Show\ShowPDOQuizService;
 use Vendon\Services\UserAnswer\Show\ShowPDOUserAnswerService;
@@ -14,7 +15,7 @@ class ResultsController
     private ShowPDOUserAnswerService $userAnswerService;
 
     public function __construct(
-        ShowPDOQuizService $quizService,
+        ShowPDOQuizService       $quizService,
         ShowPDOUserAnswerService $userAnswerService
     )
     {
@@ -41,17 +42,28 @@ class ResultsController
         foreach ($questions as $question) {
             $correctAnswers[] = $question->getCorrectAnswer();
         }
-        //var_dump($correctAnswers);die;
+        $correctAnswers = Answer::createQuestionAnswersArray($correctAnswers);
 
-        $userAnswer = $this->userAnswerService->handle($userId, $quizId);
-        $userAnswerJSON = json_decode($userAnswer->getAnswers(), true);
-        //var_dump($userAnswerJSON);die;
+        $userAnswerJSON = $this->userAnswerService->handle($userId, $quizId);
+        $userAnswers = json_decode($userAnswerJSON->getAnswers(), true);
 
+
+        $correctAnswerCount = 0;
+        $totalQuestions = 0;
+        foreach ($correctAnswers as $key => $correctAnswer) {
+            $totalQuestions++;
+            if ($correctAnswer === $userAnswers[$key]) {
+                $correctAnswerCount++;
+            }
+        }
 
         return new TwigView('Quiz/results', [
             'user' => $userName,
+            'questions' => $questions,
             'correctAnswers' => $correctAnswers,
-            'userAnswers' => $userAnswerJSON
+            'userAnswers' => $userAnswers,
+            'totalQuestions' => $totalQuestions,
+            'correctAnswerCount' => $correctAnswerCount
         ]);
     }
 }
