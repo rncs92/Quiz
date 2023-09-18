@@ -107,11 +107,11 @@ class PDOUserRepository implements UserRepository
         $queryBuilder = $this->queryBuilder;
         $userAnswer = $queryBuilder
             ->select('*')
-            ->from('users')
+            ->from('userAnswers')
             ->where('user_id = ?')
-            ->where('quiz_id = ?')
+            ->andWhere('quiz_id = ?')
             ->setParameter(0, $userId)
-            ->setParameter(0, $quizId)
+            ->setParameter(1, $quizId)
             ->fetchAssociative();
 
         return $this->buildUserAnswerModel($userAnswer);
@@ -131,8 +131,8 @@ class PDOUserRepository implements UserRepository
     private function buildUserAnswerModel($userAnswer): UserAnswer
     {
         return new UserAnswer(
-            $userAnswer['user_id'],
-            $userAnswer['quiz_id'],
+            (int) $userAnswer['user_id'],
+            (int)$userAnswer['quiz_id'],
             $userAnswer['answers'],
             (int)$userAnswer['id']
         );
