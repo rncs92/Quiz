@@ -25,6 +25,11 @@ class ResultsController
 
     public function index(): TwigView
     {
+        if(!Session::get('user')) {
+            return new TwigView('Errors/notAuthorized', []);
+        }
+
+
         $user = Session::get('user');
         $userName = substr($user->getName(), 0, -1);
         $userId = $user->getUserId();

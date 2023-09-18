@@ -19,4 +19,6 @@ interface UserRepository
 
     public function getAnswer(int $userId, int $quizId): UserAnswer;
 
+    public function getAnswerByUserId(int $userId): UserAnswer;
+
 }

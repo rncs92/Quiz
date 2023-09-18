@@ -117,6 +117,19 @@ class PDOUserRepository implements UserRepository
         return $this->buildUserAnswerModel($userAnswer);
     }
 
+    public function getAnswerByUserId(int $userId): UserAnswer
+    {
+        $queryBuilder = $this->queryBuilder;
+        $userAnswer = $queryBuilder
+            ->select('*')
+            ->from('userAnswers')
+            ->where('user_id = ?')
+            ->setParameter(0, $userId)
+            ->fetchAssociative();
+
+        return $this->buildUserAnswerModel($userAnswer);
+    }
+
     private function buildUserModel($user): User
     {
         return new User(
