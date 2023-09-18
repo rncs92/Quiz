@@ -1,11 +1,15 @@
 # Quiz website using PHP, JavaScript and Tailwind CSS without frameworks
  
 <b>Preview:</b>
-![Screenshot from 2023-09-11 15-12-01](https://github.com/rncs92/LLKC-main/assets/123461096/39188eec-e623-4cb6-b0fa-2c865beeba71)
-![Screenshot from 2023-09-11 15-12-20](https://github.com/rncs92/LLKC-main/assets/123461096/82d473b5-77e8-4bf5-9f65-e6692fec035e)
-![Screenshot from 2023-09-11 15-12-53](https://github.com/rncs92/LLKC-main/assets/123461096/23648d33-38fa-4e27-9fb3-ea0335a82abb)
-![Screenshot from 2023-09-11 15-13-05](https://github.com/rncs92/LLKC-main/assets/123461096/67875bfd-fbf8-458f-9f55-795272248ea0)
-![Screenshot from 2023-09-11 15-13-12](https://github.com/rncs92/LLKC-main/assets/123461096/fcaa11f4-56f2-41d8-998a-6c1f92cbe8d7)
+![Screenshot from 2023-09-18 18-50-37](https://github.com/rncs92/React-CV-Generator/assets/123461096/90ce86bf-3d84-4810-9a87-c83dba23e85c)
+![Screenshot from 2023-09-18 18-50-43](https://github.com/rncs92/React-CV-Generator/assets/123461096/95384dbb-b687-4dca-ae26-8301dd6ff2d7)
+![Screenshot from 2023-09-18 18-51-02](https://github.com/rncs92/React-CV-Generator/assets/123461096/c90a04d9-42bc-42fe-ba1c-b03f3b655da5)
+![Screenshot from 2023-09-18 18-51-17](https://github.com/rncs92/React-CV-Generator/assets/123461096/6b13c02b-6646-41f5-96d6-153cb3113513)
+![Screenshot from 2023-09-18 18-51-34](https://github.com/rncs92/React-CV-Generator/assets/123461096/4b2c9890-1e93-40db-8c2f-f763f7629b01)
+![Screenshot from 2023-09-18 18-51-41](https://github.com/rncs92/React-CV-Generator/assets/123461096/34ce82a1-c353-49aa-a2c6-fa41c8236fa5)
+![Screenshot from 2023-09-18 18-54-41](https://github.com/rncs92/React-CV-Generator/assets/123461096/0a25b51c-2c63-4a80-8706-52b2644da8b5)
+![Screenshot from 2023-09-18 18-55-24](https://github.com/rncs92/React-CV-Generator/assets/123461096/2d61da99-a1a6-4622-a0b2-5a21e6aad71a)
+
 
 <b>To run the project:</b>
 - Clone this project using command git clone in your terminal (or download it as a zip);
